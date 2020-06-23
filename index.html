@@ -1,28 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <title>Phone2Word</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Floating labels example for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Custom styles for this template -->
+    <link href="styles.css" rel="stylesheet">
 </head>
+
 <body>
+<form class="form-signin">
+    <div class="text-center mb-4">
+        <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Thing2Thing</h1>
+        <p>Lorem ipsum</p>
+    </div>
 
-    <form>
-        <div class="form-group">
-            <div style="text-align: center;">
-            <label>Phone number: <input type="text"></label>
-            <label>Words: <input type="text"></label>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </div>
+    <div class="form-label-group">
+        <input type="number" id="inputPhone" class="form-control" placeholder="Phone Number" autofocus>
+        <label for="inputPhone">Email address</label>
+    </div>
 
-    </form>
+    <div class="form-label-group">
+        <input type="text" id="inputWord" class="form-control" placeholder="Phone Word">
+        <label for="inputWord">Phone Word</label>
+    </div>
 
+    <div class="checkbox mb-3">
+        <label>
+            <input type="checkbox" value="remember-me"> Remember me
+        </label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <p class="mt-5 mb-3 text-muted text-center">&copy; 2020</p>
+</form>
 </body>
 </html>
-
-
-

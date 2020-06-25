@@ -14,7 +14,7 @@
     <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
     <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-database.js"></script>
-
+    
     <title>Floating labels example for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
@@ -41,46 +41,14 @@
         <input type="text" id="inputWord" class="form-control" placeholder="Phone Word">
         <label for="inputWord">Phone Word</label>
     </div>
-    <div class="checkbox mb-3">
-        <label>
-            <input type="checkbox" value="remember-me"> Remember me
-        </label>
-    </div>
-    <button id="myBtn" onclick="something()">Sign in</button>
+
+    <button id="Submit">Sign in</button>
     <p class="mt-5 mb-3 text-muted text-center">&copy; 2020</p>
 </form>
 
 
-<script>
-
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-        apiKey: "AIzaSyDkwICpMk8dgqUwGKbaLCISVcnq6hsnTcc",
-        authDomain: "phone2word.firebaseapp.com",
-        databaseURL: "https://phone2word.firebaseio.com",
-        projectId: "phone2word",
-        storageBucket: "phone2word.appspot.com",
-        messagingSenderId: "989899451141",
-        appId: "1:989899451141:web:a8186cbdfad2f42896656c",
-        measurementId: "G-ZBR9BQFTXW"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    var database = firebase.database();
-
-    function something() {
-        console.log("begin");
-        var leadsRef = database.ref('mappings');
-        leadsRef.on('value', function(snapshot) {
-            // snapshot.forEach(function(childSnapshot) {
-            var childData = snapshot.node_.children_.root_.value.value_;
-            console.log("snapshot.node_.children_.root_.value.value_: ", snapshot.node_.children_.root_.value.value_)
-            // });
-        });
-    }
-
-</script>
 
 
+<script src="js/main.js"></script>
 </body>
 </html>

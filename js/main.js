@@ -15,6 +15,7 @@ var database = firebase.database();
 
 
 function something() {
+    var input = document.getElementById("inputWord").value();
     event.preventDefault();
     console.log("begin");
     var leadsRef = database.ref('mappings');

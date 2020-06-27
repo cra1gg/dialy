@@ -29,12 +29,9 @@ function something() {
         console.log(first_num);
         console.log(second_num);
         document.getElementById("output").innerHTML = phone;
+        var leadsRef = database.ref('mappings');
+        leadsRef.orderByKey().limitToFirst(1);
     }
-    console.log(phone)
-    console.log(words)
-    var leadsRef = database.ref('mappings');
-    var idk = leadsRef.orderByKey().limitToFirst(1);
-    console.log(idk);
 /*     
     console.log("begin");
     var leadsRef = database.ref('mappings');

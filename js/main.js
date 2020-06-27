@@ -15,8 +15,27 @@ var database = firebase.database();
 
 
 function something() {
-    var input = document.getElementById("inputWord").value();
     event.preventDefault();
+    var phone = document.getElementById("inputPhone").value;
+    var words = document.getElementById("inputWord").value;
+    document.getElementById("output").value = words;
+    if (phone.length == 0){
+        document.getElementById("output").innerHTML = words;
+        console.log("2");
+    }
+    else if (words.length == 0){
+        first_num = phone.slice(0, 5);
+        second_num = phone.slice(5);
+        console.log(first_num);
+        console.log(second_num);
+        document.getElementById("output").innerHTML = phone;
+    }
+    console.log(phone)
+    console.log(words)
+    var leadsRef = database.ref('mappings');
+    var idk = leadsRef.orderByKey().limitToFirst(1);
+    console.log(idk);
+/*     
     console.log("begin");
     var leadsRef = database.ref('mappings');
     leadsRef.on('value', function(snapshot) {
@@ -24,7 +43,7 @@ function something() {
          var childData = snapshot.node_.children_.root_.value.value_;
          console.log("snapshot.node_.children_.root_.value.value_: ", snapshot.node_.children_.root_.value.value_)
         });
-    });
+    }); */
 }
 
 

@@ -16,7 +16,7 @@ var database = firebase.database();
 function something()
 {
     something2().then(data => {
-        document.getElementById('output').value = data
+        
     })
 }
 
@@ -36,23 +36,23 @@ async function something2() {
         console.log(second_num);
         
         var ref = database.ref();
-        var word1 = ""
-        var word2 = ""
-        await ref.child('mappings').orderByChild('number').equalTo(first_num).on("value", function(snapshot) {
+        var word1 = ref.child('mappings').orderByChild('number').equalTo(first_num).on("value", function(snapshot) {
             //console.log(snapshot.val());
             snapshot.forEach(function(data) {
                  word1 = data.child("word").val();
                  console.log(data.child("word").val())
+                 return data.child("word").val();
             });
         });
-        await ref.child('mappings').orderByChild('number').equalTo(second_num).on("value", function(snapshot) {
+        var word2 = ref.child('mappings').orderByChild('number').equalTo(second_num).on("value", function(snapshot) {
             //console.log(snapshot.val());
             snapshot.forEach(function(data) {
                 word2 = data.child("word").val();
                 console.log(data.child("word").val())
+                return data.child("word").val();
             });
         });
-        return word1 + ":" + word2;
+        document.getElementById('output').value = word1 + ":" + word2;
 
     }
 

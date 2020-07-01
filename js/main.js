@@ -22,15 +22,26 @@ function something() {
     if (phone.length == 0){
         document.getElementById("output").innerHTML = words;
         console.log("2");
-    }
+    } 
     else if (words.length == 0){
         first_num = phone.slice(0, 5);
         second_num = phone.slice(5);
         console.log(first_num);
         console.log(second_num);
         document.getElementById("output").innerHTML = phone;
-        var leadsRef = database.ref('mappings');
-        leadsRef.orderByKey().limitToFirst(1);
+        var ref = database.ref();
+        ref.child('mappings').orderByChild('word').equalTo(first_num).on("value", function(snapshot) {
+            console.log(snapshot.val());
+            snapshot.forEach(function(data) {
+                console.log(data.key);
+            });
+        });
+        ref.child('mappings').orderByChild('word').equalTo(second_num).on("value", function(snapshot) {
+            console.log(snapshot.val());
+            snapshot.forEach(function(data) {
+                console.log(data.key);
+            });
+        });
     }
 /*     
     console.log("begin");

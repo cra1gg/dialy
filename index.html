@@ -5,17 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
-
-    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
-
-    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-app.js"></script>
-    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
-    <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-database.js"></script>
-    
-    <title>Floating labels example for Bootstrap</title>
+    <link rel="icon" href="favicon.ico">
+    <title>Product example for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -25,12 +16,31 @@
 </head>
 
 <body>
-<form class="form-signin">
-    <div class="text-center mb-4">
-        <!--<img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
-        <h1 class="h3 mb-3 font-weight-normal">Thing2Thing</h1>
-        <p>Lorem ipsum</p>
+
+
+<nav class="site-header py-1"> <!-- can also add  "sticky-top" -->
+    <div class="container d-flex flex-column flex-md-row justify-content-between">
+        <a class="py-2" href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 class="d-block mx-auto">
+                <circle cx="10" cy="10" r="7"></circle>
+                <line x1="3" y1="10" x2="3" y2="100"></line>
+            </svg>
+        </a>
+        <a class="py-2 d-none d-md-inline-block" href="#">Info</a>
+        <a class="py-2 d-none d-md-inline-block" href="#more">More Projects</a>
     </div>
+</nav>
+
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-phone">
+    <div class="col-md-5 p-lg-5 mx-auto my-5">
+        <h1 class="display-4 font-weight-normal">Phone2Word</h1>
+        <!--<p class="lead font-weight-normal">919 416 1234  ^Texas:Pete</p>-->
+        <p></p>
+        <br>
+        <br>
+        <a class="btn btn-outline-secondary" href="#convert">Try it now</a>
 
 
     <div class="form-label-group">
@@ -53,5 +63,87 @@
 
 
 <script src="js/main.js"></script>
+    </div>
+</div>
+
+<div id="convert" class=" flex-md-equal w-100 my-md-3 pl-md-3">
+    <div class="bg-dark mr-md-5 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+        <div class="my-3 py-3">
+            <h2 class="display-5">Enter a phone number</h2>
+            <p class="lead">Or a PhoneWord to convert to a number</p>
+        </div>
+        <div class="bg- box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+            <form class="form-signin">
+                <div class="form-label-group">
+                    <input type="number" id="inputPhone" class="form-control" placeholder="Phone Number" autofocus>
+                    <label for="inputPhone"></label>
+                </div>
+
+                <div class="form-label-group">
+                    <input type="text" id="inputWord" class="form-control" placeholder="Phone Word">
+                    <label for="inputWord"></label>
+                </div>
+
+
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Convert</button>
+                <p class="mt-5 mb-3 text-muted text-center">&copy;Phone2Word 2020</p>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<footer class="container py-5">
+    <div class="row">
+        <div class="col-12 col-md">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 class="d-block mx-auto">
+                <circle cx="10" cy="10" r="7"></circle>
+                <line x1="3" y1="10" x2="3" y2="100"></line>
+            </svg>
+            <small class="d-block mb-3 text-muted">&copy;Phone2Word 2020</small>
+        </div>
+        <div id="more" class="col-6 col-md">
+            <h5>Cra1gg's Other Projects</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="text-muted" href="#">Cool stuff</a></li>
+                <li><a class="text-muted" href="#">Random feature</a></li>
+                <li><a class="text-muted" href="#">Team feature</a></li>
+                <li><a class="text-muted" href="#">Stuff for developers</a></li>
+                <li><a class="text-muted" href="#">Another one</a></li>
+                <li><a class="text-muted" href="#">Last time</a></li>
+            </ul>
+        </div>
+        <div class="col-6 col-md">
+            <h5>shmkane's Other Projects</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="text-muted" href="#">Resource</a></li>
+                <li><a class="text-muted" href="#">Resource name</a></li>
+                <li><a class="text-muted" href="#">Another resource</a></li>
+                <li><a class="text-muted" href="#">Final resource</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script>
+    Holder.addTheme('thumb', {
+        bg: '#55595c',
+        fg: '#eceeef',
+        text: 'Thumbnail'
+    });
+</script>
 </body>
 </html>

@@ -30,13 +30,13 @@ function something() {
         console.log(second_num);
         document.getElementById("output").innerHTML = phone;
         var ref = database.ref();
-        ref.child('mappings').orderByChild('word').equalTo(first_num).on("value", function(snapshot) {
+        ref.child('mappings').orderByChild('number').equalTo(first_num).on("value", function(snapshot) {
             console.log(snapshot.val());
             snapshot.forEach(function(data) {
                 console.log(data.key);
             });
         });
-        ref.child('mappings').orderByChild('word').equalTo(second_num).on("value", function(snapshot) {
+        ref.child('mappings').orderByChild('number').equalTo(second_num).on("value", function(snapshot) {
             console.log(snapshot.val());
             snapshot.forEach(function(data) {
                 console.log(data.key);

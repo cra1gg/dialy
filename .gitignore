@@ -1,3 +1,4 @@
 /.idea/
-/firebase/firebase.js
+/firebase
+/firebase/*
 /words/

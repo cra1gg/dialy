@@ -32,15 +32,9 @@ function something() {
         var ref = database.ref();
         ref.child('mappings').orderByChild('number').equalTo(first_num).on("value", function(snapshot) {
             console.log(snapshot.val());
-            snapshot.forEach(function(data) {
-                console.log(data.key);
-            });
         });
         ref.child('mappings').orderByChild('number').equalTo(second_num).on("value", function(snapshot) {
-            console.log(snapshot.val());
-            snapshot.forEach(function(data) {
-                console.log(data.key);
-            });
+            console.log(snapshot.val().word);
         });
     }
 /*     

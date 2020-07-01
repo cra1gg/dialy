@@ -13,8 +13,14 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 
+function something()
+{
+    something2().then(data => {
+        document.getElementById('output').value = data
+    })
+}
 
-function something() {
+async function something2() {
     event.preventDefault();
     var phone = document.getElementById("inputPhone").value;
     var words = document.getElementById("inputWord").value;
@@ -28,15 +34,29 @@ function something() {
         second_num = phone.slice(5);
         console.log(first_num);
         console.log(second_num);
-        document.getElementById("output").innerHTML = phone;
+        
         var ref = database.ref();
-        ref.child('mappings').orderByChild('number').equalTo(first_num).on("value", function(snapshot) {
-            console.log(snapshot.val());
+        var word1 = ""
+        var word2 = ""
+        await ref.child('mappings').orderByChild('number').equalTo(first_num).on("value", function(snapshot) {
+            //console.log(snapshot.val());
+            snapshot.forEach(function(data) {
+                 word1 = data.child("word").val();
+                 console.log(data.child("word").val())
+            });
         });
-        ref.child('mappings').orderByChild('number').equalTo(second_num).on("value", function(snapshot) {
-            console.log(snapshot.val().word);
+        await ref.child('mappings').orderByChild('number').equalTo(second_num).on("value", function(snapshot) {
+            //console.log(snapshot.val());
+            snapshot.forEach(function(data) {
+                word2 = data.child("word").val();
+                console.log(data.child("word").val())
+            });
         });
+        return word1 + ":" + word2;
+
     }
+
+
 /*     
     console.log("begin");
     var leadsRef = database.ref('mappings');

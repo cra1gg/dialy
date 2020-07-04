@@ -15,6 +15,7 @@ var database = firebase.database();
 
 function something()
 {
+    event.preventDefault();
     something2().then(data => {
         
     })
@@ -69,4 +70,4 @@ async function something2() {
 }
 
 
-document.getElementById("Submit").addEventListener("click", something, false);
+document.getElementById("Submit").addEventListener("click", something);

@@ -16,18 +16,14 @@ var database = firebase.database();
 function something()
 {
     event.preventDefault();
-    something2().then(data => {
-        
-    })
+    something2();
 }
 
 async function something2() {
     event.preventDefault();
     var phone = document.getElementById("inputPhone").value;
     var words = document.getElementById("inputWord").value;
-    document.getElementById("output").value = words;
     if (phone.length == 0){
-        document.getElementById("output").innerHTML = words;
         console.log("2");
     } 
     else if (words.length == 0){
@@ -37,26 +33,19 @@ async function something2() {
         console.log(second_num);
         
         var ref = database.ref();
-        var word1 = ref.child('mappings').orderByChild('number').equalTo(first_num).on("value", function(snapshot) {
-            //console.log(snapshot.val());
+        var word1 = ref.child('mappings').orderByChild('number').equalTo(first_num).once("value").then(function(snapshot){
             snapshot.forEach(function(data) {
-                 word1 = data.child("word").val();
-                 console.log(data.child("word").val())
-                 return data.child("word").val();
+                document.getElementById('word1').innerHTML = data.child("word").val();
             });
-        });
-        var word2 = ref.child('mappings').orderByChild('number').equalTo(second_num).on("value", function(snapshot) {
-            //console.log(snapshot.val());
+        })
+        var word1 = ref.child('mappings').orderByChild('number').equalTo(second_num).once("value").then(function(snapshot){
             snapshot.forEach(function(data) {
-                word2 = data.child("word").val();
-                console.log(data.child("word").val())
-                return data.child("word").val();
+                document.getElementById('word2').innerHTML = data.child("word").val();
             });
-        });
-        document.getElementById('output').value = word1 + ":" + word2;
+        })
+        return word1 + ":" + word2;
 
     }
-
 
 /*     
     console.log("begin");
@@ -68,6 +57,5 @@ async function something2() {
         });
     }); */
 }
-
 
 document.getElementById("Submit").addEventListener("click", something);

@@ -15,20 +15,24 @@ f = open("final_wordlist.txt", "r")
 lst = f.readlines()
 db_list = []
 for i in range(100000):
-    wordindex = random.randint(0, len(lst))
-    while lst[wordindex] in db_list:
-        wordindex = random.randint(0, len(lst))
-    numberword = ""
-    if i < 10:
-        numberword = "0000" + str(i)
-    elif i < 100:
-        numberword = "000" + str(i)
-    elif i < 1000:
-        numberword = "00" + str(i)
-    elif i < 10000:
-        numberword = "0" + str(i)
-    key = ref.push({
-        'word': lst[wordindex].rstrip("\n"),
-        'number': numberword
-    })
-    print(key)
+    try:
+        wordindex = random.randint(0, len(lst)-1)
+        while lst[wordindex] in db_list:
+            wordindex = random.randint(0, len(lst)-1)
+        numberword = ""
+        if i < 10:
+            numberword = "0000" + str(i)
+        elif i < 100:
+            numberword = "000" + str(i)
+        elif i < 1000:
+            numberword = "00" + str(i)
+        elif i < 10000:
+            numberword = "0" + str(i)
+        key = ref.push({
+            'word': lst[wordindex].rstrip("\n"),
+            'number': numberword
+        })
+        print(key)
+    except:
+        print("error")
+    

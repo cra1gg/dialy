@@ -28,6 +28,8 @@ for i in range(100000):
             numberword = "00" + str(i)
         elif i < 10000:
             numberword = "0" + str(i)
+        else:
+            numberword = str(i)
         key = ref.push({
             'word': lst[wordindex].rstrip("\n"),
             'number': numberword

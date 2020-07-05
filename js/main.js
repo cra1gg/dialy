@@ -29,9 +29,6 @@ async function getWords(){
     var phone = document.getElementById("inputPhone").value;
     first_num = phone.slice(0, 5);
     second_num = phone.slice(5);
-    console.log(first_num);
-    console.log(second_num);
-    
     var ref = database.ref();
 
     var word1 = ref.child('mappings').orderByChild('number').equalTo(first_num).once("value")

@@ -13,12 +13,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 
-function something()
-{
-    event.preventDefault();
-    something2();
-}
-
 async function something2() {
     event.preventDefault();
     var phone = document.getElementById("inputPhone").value;
@@ -33,29 +27,23 @@ async function something2() {
         console.log(second_num);
         
         var ref = database.ref();
-        var word1 = ref.child('mappings').orderByChild('number').equalTo(first_num).once("value").then(function(snapshot){
-            snapshot.forEach(function(data) {
-                document.getElementById('word1').innerHTML = data.child("word").val();
+
+        var word1 = ref.child('mappings').orderByChild('number').equalTo(first_num).once("value")
+        var word2 = ref.child('mappings').orderByChild('number').equalTo(second_num).once("value")
+        Promise.all([word1, word2]).then((values) =>
+        {
+            var resultword1;
+            var resultword2;
+            values[0].forEach(function(data) {
+                resultword1 = data.child("word").val();
             });
-        })
-        var word1 = ref.child('mappings').orderByChild('number').equalTo(second_num).once("value").then(function(snapshot){
-            snapshot.forEach(function(data) {
-                document.getElementById('word2').innerHTML = data.child("word").val();
+            values[1].forEach(function(data) {
+                resultword2 = data.child("word").val();
             });
+            document.getElementById('result').innerHTML = resultword1 + ":" + resultword2;
         })
-        return word1 + ":" + word2;
 
     }
-
-/*     
-    console.log("begin");
-    var leadsRef = database.ref('mappings');
-    leadsRef.on('value', function(snapshot) {
-         snapshot.forEach(function(childSnapshot) {
-         var childData = snapshot.node_.children_.root_.value.value_;
-         console.log("snapshot.node_.children_.root_.value.value_: ", snapshot.node_.children_.root_.value.value_)
-        });
-    }); */
 }
 
-document.getElementById("Submit").addEventListener("click", something);
+document.getElementById("Submit").addEventListener("click", something2);

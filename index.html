@@ -14,9 +14,17 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Custom styles for this template -->
     <link href="styles.css" rel="stylesheet">
+    
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-app.js"></script>
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-database.js"></script>
+    
 </head>
 
 <body>
+
 <div class="bg-dark">
     <nav class="site-header py-1"> <!-- can also add  "sticky-top" -->
         <div class="container d-flex flex-column flex-md-row justify-content-between">
@@ -60,12 +68,17 @@
                     </div>
 
 
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Convert</button>
+                    <button class="btn btn-lg btn-primary btn-block" id="Submit">Convert</button>
+                    <label id="result">Placeholder</label>
+                 
                     <p class="mt-5 mb-3 text-muted text-center">&copy;Phone2Word 2020</p>
                 </form>
             </div>
+            
         </div>
+        
     </div>
+    
 
 
     <footer class="container py-5">
@@ -106,6 +119,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
@@ -113,13 +127,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
             integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
             crossorigin="anonymous"></script>
-    <script>
+    <!--<script>
         Holder.addTheme('thumb', {
             bg: '#55595c',
             fg: '#eceeef',
             text: 'Thumbnail'
         });
-    </script>
+    </script>-->
 </div>
 </body>
 </html>

@@ -13,60 +13,38 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 
-function something()
-{
-    something2().then(data => {
-        document.getElementById('output').value = data
-    })
-}
-
-async function something2() {
+async function getResult() {
     event.preventDefault();
     var phone = document.getElementById("inputPhone").value;
     var words = document.getElementById("inputWord").value;
-    document.getElementById("output").value = words;
     if (phone.length == 0){
-        document.getElementById("output").innerHTML = words;
         console.log("2");
     } 
     else if (words.length == 0){
-        first_num = phone.slice(0, 5);
-        second_num = phone.slice(5);
-        console.log(first_num);
-        console.log(second_num);
-        
-        var ref = database.ref();
-        var word1 = ""
-        var word2 = ""
-        await ref.child('mappings').orderByChild('number').equalTo(first_num).on("value", function(snapshot) {
-            //console.log(snapshot.val());
-            snapshot.forEach(function(data) {
-                 word1 = data.child("word").val();
-                 console.log(data.child("word").val())
-            });
-        });
-        await ref.child('mappings').orderByChild('number').equalTo(second_num).on("value", function(snapshot) {
-            //console.log(snapshot.val());
-            snapshot.forEach(function(data) {
-                word2 = data.child("word").val();
-                console.log(data.child("word").val())
-            });
-        });
-        return word1 + ":" + word2;
-
+        getWords();
     }
-
-
-/*     
-    console.log("begin");
-    var leadsRef = database.ref('mappings');
-    leadsRef.on('value', function(snapshot) {
-         snapshot.forEach(function(childSnapshot) {
-         var childData = snapshot.node_.children_.root_.value.value_;
-         console.log("snapshot.node_.children_.root_.value.value_: ", snapshot.node_.children_.root_.value.value_)
-        });
-    }); */
 }
 
+async function getWords(){
+    var phone = document.getElementById("inputPhone").value;
+    first_num = phone.slice(0, 5);
+    second_num = phone.slice(5);
+    var ref = database.ref();
 
-document.getElementById("Submit").addEventListener("click", something, false);
+    var word1 = ref.child('mappings').orderByChild('number').equalTo(first_num).once("value")
+    var word2 = ref.child('mappings').orderByChild('number').equalTo(second_num).once("value")
+    Promise.all([word1, word2]).then((values) =>
+    {
+        var resultword1;
+        var resultword2;
+        values[0].forEach(function(data) {
+            resultword1 = data.child("word").val();
+        });
+        values[1].forEach(function(data) {
+            resultword2 = data.child("word").val();
+        });
+        document.getElementById('result').innerHTML = resultword1 + ":" + resultword2;
+    })
+}
+
+document.getElementById("Submit").addEventListener("click", getResult);

@@ -21,29 +21,33 @@ async function getResult() {
         console.log("2");
     } 
     else if (words.length == 0){
-        first_num = phone.slice(0, 5);
-        second_num = phone.slice(5);
-        console.log(first_num);
-        console.log(second_num);
-        
-        var ref = database.ref();
-
-        var word1 = ref.child('mappings').orderByChild('number').equalTo(first_num).once("value")
-        var word2 = ref.child('mappings').orderByChild('number').equalTo(second_num).once("value")
-        Promise.all([word1, word2]).then((values) =>
-        {
-            var resultword1;
-            var resultword2;
-            values[0].forEach(function(data) {
-                resultword1 = data.child("word").val();
-            });
-            values[1].forEach(function(data) {
-                resultword2 = data.child("word").val();
-            });
-            document.getElementById('result').innerHTML = resultword1 + ":" + resultword2;
-        })
-
+        getWords();
     }
+}
+
+async function getWords(){
+    var phone = document.getElementById("inputPhone").value;
+    first_num = phone.slice(0, 5);
+    second_num = phone.slice(5);
+    console.log(first_num);
+    console.log(second_num);
+    
+    var ref = database.ref();
+
+    var word1 = ref.child('mappings').orderByChild('number').equalTo(first_num).once("value")
+    var word2 = ref.child('mappings').orderByChild('number').equalTo(second_num).once("value")
+    Promise.all([word1, word2]).then((values) =>
+    {
+        var resultword1;
+        var resultword2;
+        values[0].forEach(function(data) {
+            resultword1 = data.child("word").val();
+        });
+        values[1].forEach(function(data) {
+            resultword2 = data.child("word").val();
+        });
+        document.getElementById('result').innerHTML = resultword1 + ":" + resultword2;
+    })
 }
 
 document.getElementById("Submit").addEventListener("click", getResult);

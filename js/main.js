@@ -13,7 +13,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 
-async function something2() {
+async function getResult() {
     event.preventDefault();
     var phone = document.getElementById("inputPhone").value;
     var words = document.getElementById("inputWord").value;
@@ -46,4 +46,4 @@ async function something2() {
     }
 }
 
-document.getElementById("Submit").addEventListener("click", something2);
+document.getElementById("Submit").addEventListener("click", getResult);

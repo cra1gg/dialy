@@ -1,5 +1,4 @@
 /.idea/
-/firebase
-/firebase/*
+/firebase/firebase.js
 /words/
 /dateload/*.json

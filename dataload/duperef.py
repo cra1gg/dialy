@@ -8,5 +8,6 @@ firebase_admin.initialize_app(cred, {
     'databaseURL': "https://phone2word.firebaseio.com/"
 })
 
-ref = db.reference('/-MBftuPMr586294dG0Um')
-ref.delete()
+parent_ref = db.reference()
+ref = db.reference('/mappings')
+parent_ref.child("phonemappings").set(ref.get())

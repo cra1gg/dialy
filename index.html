@@ -7,20 +7,20 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>Phone2Word</title>
+    <title>Phone2Words</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Custom styles for this template -->
     <link href="styles.css" rel="stylesheet">
-    
+
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-app.js"></script>
     <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
     <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-database.js"></script>
-    
+
 </head>
 
 <body>
@@ -42,63 +42,59 @@
     </nav>
 
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
-        <img src="Texas.Pete.png" alt="416 919 1234 <=> Two.Words" class="bg-phone">
         <div class="col-md-5 p-lg-5 mx-auto my-5">
-            <h1 class="display-4 font-weight-normal text-white-50">Phone2Word</h1>
+            <h1 class="display-4 font-weight-normal text-white-50">Phone2Words</h1>
             <a class="btn btn-outline-secondary" href="#convert">Try it now</a>
         </div>
+        <img src="Texas.Pete.png" alt="416 919 1234 <=> Two.Words" class="bg-phone">
+
     </div>
 
     <div id="convert" class=" flex-md-equal w-100 my-md-3 pl-md-3">
         <div class="bg-dark mr-md-5 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
             <div class="my-3 py-3">
                 <h2 class="display-5">Enter a phone number</h2>
-                <p class="lead">Or a PhoneWord to convert to a number</p>
+                <p class="lead text-white-50">Or a PhoneWord to convert to a number</p>
             </div>
-            <div class="bg- box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-                <form class="form-signin">
+            <div class="mx-auto" style="width: 60%; height: 200px; border-radius: 21px 21px 0 0;">
+                <form class="">
                     <div class="form-label-group">
-                        <input type="number" id="inputPhone" class="form-control" placeholder="Phone Number" autofocus>
+                        <input type="text" id="inputPhone" class="form-control" placeholder="4169191234" autofocus>
                         <label for="inputPhone"></label>
                     </div>
 
                     <div class="form-label-group">
-                        <input type="text" id="inputWord" class="form-control" placeholder="Phone Word">
+                        <input type="text" id="inputWord" class="form-control" placeholder="texas:pete">
                         <label for="inputWord"></label>
                     </div>
 
-
-                    <button class="btn btn-lg btn-primary btn-block" id="Submit">Convert</button>
-                    <label id="result">Placeholder</label>
-                 
-                    <p class="mt-5 mb-3 text-muted text-center">&copy;Phone2Word 2020</p>
+                    <button class="btn btn-lg btn-primary btn-block" id="Submit">Convert
+                    </button>
+                    <label id="result" class="alert alert-success" role="alert"> </label>
                 </form>
             </div>
-            
+
+            <div class="box-shadow mx-auto" style="width: 80%; height: 20px; border-radius: 10px 10px 0 0;">
+                <p class="mt-5 mb-3 text-muted text-center">&copy;Phone2Words 2020</p>
+            </div>
         </div>
-        
+
     </div>
 
     <footer class="container py-5">
         <div class="row">
             <div class="col-12 col-md">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                     class="d-block mx-auto">
-                    <circle cx="10" cy="10" r="7"></circle>
-                    <line x1="3" y1="10" x2="3" y2="100"></line>
-                </svg>
-                <small class="d-block mb-3 text-muted">&copy;Phone2Word 2020</small>
+                <small class="d-block mb-3 text-muted">Made with <3 or something</small>
+                <p>Heart icon: <span class="glyphicon glyphicon-heart"></span></p>
+
             </div>
             <div id="more" class="col-6 col-md">
                 <h5>Cra1gg's Other Projects</h5>
                 <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Cool stuff</a></li>
-                    <li><a class="text-muted" href="#">Random feature</a></li>
-                    <li><a class="text-muted" href="#">Team feature</a></li>
-                    <li><a class="text-muted" href="#">Stuff for developers</a></li>
-                    <li><a class="text-muted" href="#">Another one</a></li>
-                    <li><a class="text-muted" href="#">Last time</a></li>
+                    <li><a class="text-muted" href="https://github.com/cra1gg/wordify">Wordify</a></li>
+                    <li><a class="text-muted" href="https://github.com/cra1gg/tweetverifier">Tweet Verifier</a></li>
+                    <li><a class="text-muted" href="https://github.com/cra1gg/countingbot">Counting Bot</a></li>
+                    <li><a class="text-muted" href="https://github.com/cra1gg/ebayresellerapp">Ebay Reseller</a></li>
                 </ul>
             </div>
             <div class="col-6 col-md">

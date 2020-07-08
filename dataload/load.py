@@ -19,6 +19,7 @@ for i in range(100000):
         wordindex = random.randint(0, len(lst)-1)
         while lst[wordindex] in db_list:
             wordindex = random.randint(0, len(lst)-1)
+        db_list.append(lst[wordindex])
         numberword = ""
         if i < 10:
             numberword = "0000" + str(i)

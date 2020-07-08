@@ -45,6 +45,7 @@ async function getPhone(){
         });
         var result = resultnum1 + resultnum2;
         document.getElementById('result').innerHTML = "(" + result.slice(0, 3) + ") " + result.slice(3, 6) + "-" + result.slice(6, 10);
+        document.getElementById("result").style.display = 'inline-block';
     })
 }
 
@@ -67,7 +68,9 @@ async function getWords(){
             resultword2 = data.child("word").val();
         });
         document.getElementById('result').innerHTML = resultword1 + ":" + resultword2;
+        document.getElementById("result").style.display = 'inline-block';
     })
 }
 
 document.getElementById("Submit").addEventListener("click", getResult);
+document.getElementById("result").style.display = 'none';

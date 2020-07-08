@@ -18,11 +18,34 @@ async function getResult() {
     var phone = document.getElementById("inputPhone").value;
     var words = document.getElementById("inputWord").value;
     if (phone.length == 0){
-        console.log("2");
+        getPhone();
     } 
     else if (words.length == 0){
         getWords();
     }
+}
+
+async function getPhone(){
+    var words = document.getElementById("inputWord").value;
+    //Add error checking
+    var word1 = words.split(":")[0];
+    var word2 = words.split(":")[1];
+    var ref = database.ref();
+    var phone1 = ref.child('phonemappings').orderByChild('word').equalTo(word1).once("value")
+    var phone2 = ref.child('phonemappings').orderByChild('word').equalTo(word2).once("value")
+    Promise.all([phone1, phone2]).then((values) =>
+    {
+        var resultnum1;
+        var resultnum2;
+        values[0].forEach(function(data) {
+            resultnum1 = data.child("number").val();
+        });
+        values[1].forEach(function(data) {
+            resultnum2 = data.child("number").val();
+        });
+        var result = resultnum1 + resultnum2;
+        document.getElementById('result').innerHTML = "(" + result.slice(0, 3) + ") " + result.slice(3, 6) + "-" + result.slice(6, 10);
+    })
 }
 
 async function getWords(){

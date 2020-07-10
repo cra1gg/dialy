@@ -15,18 +15,18 @@ var database = firebase.database();
 
 async function getResult() {
     event.preventDefault();
-    var phone = document.getElementById("inputPhone").value;
-    var words = document.getElementById("inputWord").value;
-    if (phone.length == 0){
-        getPhone();
-    } 
-    else if (words.length == 0){
+    var phoneformat = /^\d{10}$/;
+    var wordformat = /^[A-z]+:[A-z]+$/;
+    if (document.getElementById("input").value.match(phoneformat)){
         getWords();
+    }
+    else if (document.getElementById("input").value.match(wordformat)){
+        getPhone();
     }
 }
 
 async function getPhone(){
-    var words = document.getElementById("inputWord").value;
+    var words = document.getElementById("input").value;
     //Add error checking
     var word1 = words.split(":")[0];
     var word2 = words.split(":")[1];
@@ -50,7 +50,7 @@ async function getPhone(){
 }
 
 async function getWords(){
-    var phone = document.getElementById("inputPhone").value;
+    var phone = document.getElementById("input").value;
     first_num = phone.slice(0, 5);
     second_num = phone.slice(5);
     var ref = database.ref();

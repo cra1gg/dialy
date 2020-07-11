@@ -34,7 +34,6 @@ async function getResult() {
 
 async function getPhone(){
     var words = document.getElementById("input").value;
-    //Add error checking
     var word1 = words.split(":")[0];
     var word2 = words.split(":")[1];
     var ref = database.ref();

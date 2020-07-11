@@ -18,10 +18,17 @@ async function getResult() {
     var phoneformat = /^\d{10}$/;
     var wordformat = /^[A-z]+:[A-z]+$/;
     if (document.getElementById("input").value.match(phoneformat)){
+        document.getElementById("error").style.display = 'none';
         getWords();
     }
     else if (document.getElementById("input").value.match(wordformat)){
+        document.getElementById("error").style.display = 'none';
         getPhone();
+        
+    }
+    else {
+        document.getElementById('error').innerHTML = "Please enter either a phone number or a combination of two words";
+        document.getElementById("error").style.display = 'inline-block';
     }
 }
 
@@ -74,3 +81,4 @@ async function getWords(){
 
 document.getElementById("Submit").addEventListener("click", getResult);
 document.getElementById("result").style.display = 'none';
+document.getElementById("error").style.display = 'none';

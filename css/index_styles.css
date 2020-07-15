@@ -2,6 +2,10 @@
     max-width: 960px;
 }
 
+input {
+    text-align: center
+  }
+  
 /*
  * Custom translucent site header
  */
@@ -85,3 +89,9 @@
 }
 
 .overflow-hidden { overflow: hidden; }
+
+input[type="text"]::placeholder {  
+                  
+    /* Firefox, Chrome, Opera */ 
+    text-align: center; 
+} 

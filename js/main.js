@@ -15,19 +15,25 @@ var database = firebase.database();
 
 async function getResult() {
     event.preventDefault();
-    var phone = document.getElementById("inputPhone").value;
-    var words = document.getElementById("inputWord").value;
-    if (phone.length == 0){
-        getPhone();
-    } 
-    else if (words.length == 0){
+    var phoneformat = /^\d{10}$/;
+    var wordformat = /^[A-z]+:[A-z]+$/;
+    if (document.getElementById("input").value.match(phoneformat)){
+        document.getElementById("error").style.display = 'none';
         getWords();
+    }
+    else if (document.getElementById("input").value.match(wordformat)){
+        document.getElementById("error").style.display = 'none';
+        getPhone();
+        
+    }
+    else {
+        document.getElementById('error').innerHTML = "Please enter either a phone number or a combination of two words";
+        document.getElementById("error").style.display = 'inline-block';
     }
 }
 
 async function getPhone(){
-    var words = document.getElementById("inputWord").value;
-    //Add error checking
+    var words = document.getElementById("input").value;
     var word1 = words.split(":")[0];
     var word2 = words.split(":")[1];
     var ref = database.ref();
@@ -45,11 +51,12 @@ async function getPhone(){
         });
         var result = resultnum1 + resultnum2;
         document.getElementById('result').innerHTML = "(" + result.slice(0, 3) + ") " + result.slice(3, 6) + "-" + result.slice(6, 10);
+        document.getElementById("result").style.display = 'inline-block';
     })
 }
 
 async function getWords(){
-    var phone = document.getElementById("inputPhone").value;
+    var phone = document.getElementById("input").value;
     first_num = phone.slice(0, 5);
     second_num = phone.slice(5);
     var ref = database.ref();
@@ -67,7 +74,10 @@ async function getWords(){
             resultword2 = data.child("word").val();
         });
         document.getElementById('result').innerHTML = resultword1 + ":" + resultword2;
+        document.getElementById("result").style.display = 'inline-block';
     })
 }
 
 document.getElementById("Submit").addEventListener("click", getResult);
+document.getElementById("result").style.display = 'none';
+document.getElementById("error").style.display = 'none';

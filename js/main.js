@@ -14,6 +14,8 @@ firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 
 async function getResult() {
+    document.getElementById("error").style.display = 'none';
+    document.getElementById("result").style.display = 'none';
     event.preventDefault();
     var phoneformat = /^\d{10}$/;
     var wordformat = /^[A-z]+:[A-z]+$/;

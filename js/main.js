@@ -50,8 +50,15 @@ async function getPhone(){
             resultnum2 = data.child("number").val();
         });
         var result = resultnum1 + resultnum2;
-        document.getElementById('result').innerHTML = "(" + result.slice(0, 3) + ") " + result.slice(3, 6) + "-" + result.slice(6, 10);
-        document.getElementById("result").style.display = 'inline-block';
+        if (isNaN(result)){
+            document.getElementById('error').innerHTML = "That phoneword is not valid. Please try again.";
+            document.getElementById("error").style.display = 'inline-block';
+        }
+        else {
+            document.getElementById('result').innerHTML = "(" + result.slice(0, 3) + ") " + result.slice(3, 6) + "-" + result.slice(6, 10);
+            document.getElementById("result").style.display = 'inline-block';
+        }
+        
     })
 }
 

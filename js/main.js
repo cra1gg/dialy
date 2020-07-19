@@ -77,10 +77,10 @@ async function getWords(){
         var resultword1;
         var resultword2;
         values[0].forEach(function(data) {
-            resultword1 = data.child("word").val();
+            resultword1 = data.child("word").val().toLowerCase();
         });
         values[1].forEach(function(data) {
-            resultword2 = data.child("word").val();
+            resultword2 = data.child("word").val().toLowerCase();
         });
         document.getElementById('result').innerHTML = resultword1 + ":" + resultword2;
         document.getElementById("result").style.display = 'inline-block';

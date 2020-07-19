@@ -36,8 +36,8 @@ async function getResult() {
 
 async function getPhone(){
     var words = document.getElementById("input").value;
-    var word1 = words.split(":")[0];
-    var word2 = words.split(":")[1];
+    var word1 = words.split(":")[0].toLowerCase();
+    var word2 = words.split(":")[1].toLowerCase();
     var ref = database.ref();
     var phone1 = ref.child('phonemappings').orderByChild('word').equalTo(word1).once("value")
     var phone2 = ref.child('phonemappings').orderByChild('word').equalTo(word2).once("value")

@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Phone2Words converts your phone number into easy to remember 2 words. Convert your easy to remember words back into numbers.">
+    <meta name="description"
+          content="Phone2Words converts your phone number into easy to remember 2 words. Convert your easy to remember words back into numbers.">
     <meta name="author" content="Co-authored by Craig (cra1gg), Soham (shmkane)">
     <link rel="icon" href="assets/favicon.ico">
 
@@ -23,7 +24,7 @@
 
 </head>
 
-<body>
+<body class="bg-dark">
 <div class="bg-dark">
     <nav class="site-header py-1 sticky-top"> <!-- can also add  "sticky-top" -->
         <div class="container d-flex flex-column flex-md-row justify-content-between">
@@ -40,29 +41,30 @@
         </div>
     </nav>
 
-    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
-        <div class="col-md-5 p-lg-5 mx-auto my-5">
+    <div class="position-relative text-center">
+        <div class="col-md-5 mx-auto my-5">
             <h1 class="display-4 font-weight-normal text-white-50">Phone2Words</h1>
-            <a class="btn btn-outline-secondary" href="#convert">Try it now</a>
         </div>
-        <img src="assets/background.png" alt="416 919 1234 <=> Two.Words" class="bg-phone">
-
     </div>
 
-    <div id="convert" class=" flex-md-equal w-100 my-md-3 pl-md-3">
-        <div class="bg-dark mr-md-5 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+    <div id="convert" class=" flex-md-equal w-100 ">
+        <div class="bg-dark  text-center text-white overflow-hidden">
             <div class="my-3 py-3">
-                <h2 class="display-5">Enter a phone number</h2>
-                <p class="lead text-white-50">Or a PhoneWord to convert to a number</p>
+                <h2 class="display-5">Enter 10-Digit Phone Number</h2>
+                <p class="lead text-white-50">Or a Phone-Word</p>
             </div>
-            <div class="mx-auto" style="width: 60%; height: 200px; border-radius: 21px 21px 0 0;">
-                <form class="">
+            <div class="mx-auto" style="width: 40%; height: 200px; border-radius: 21px 21px 0 0;">
+                <form>
                     <div class="form-label-group">
-                        <input type="text" id="input" class="form-control" placeholder="4169191234 or apple:potato" autofocus>
+                        <input type="text" id="input" class="form-control"
+                               placeholder="Example: 4169191234 or apple:potato" autofocus>
                         <label for="input"></label>
                     </div>
 
-                    <button class="btn btn-lg btn-primary btn-block" id="Submit">Convert</button>
+                    <button class="btn btn-lg btn-primary btn-block" style="width: 15%; margin: 0 auto; display: block;"
+                            id="Submit">Convert
+                    </button>
+                    <br>
                     <label id="result" class="alert alert-success" role="alert"></label>
                     <label id="error" class="alert alert-danger" role="alert"></label>
                 </form>
@@ -75,30 +77,28 @@
 
     </div>
 
-    <footer class="container py-5">
+    <footer class="container py-5 footer">
         <div class="row">
             <div class="col-12 col-md">
-                <small class="d-block mb-3 text-muted">Made with <3 or something</small>
-                <p>Heart icon: <span class="glyphicon glyphicon-heart"></span></p>
-
+                <small class="d-block mb-3 text-muted"><3</small>
             </div>
             <div id="more" class="col-6 col-md">
-                <h5>Cra1gg's Other Projects</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="https://github.com/cra1gg/wordify">Wordify</a></li>
-                    <li><a class="text-muted" href="https://github.com/cra1gg/tweetverifier">Tweet Verifier</a></li>
-                    <li><a class="text-muted" href="https://github.com/cra1gg/countingbot">Counting Bot</a></li>
-                    <li><a class="text-muted" href="https://github.com/cra1gg/ebayresellerapp">Ebay Reseller</a></li>
-                </ul>
+                <h5><a href="https://cra1g.ca/currentprojects.html">Craig's Other Projects</a></h5>
+                <!--                <ul class="list-unstyled text-small">-->
+                <!--                    <li><a class="text-muted" href="https://github.com/cra1gg/wordify">Wordify</a></li>-->
+                <!--                    <li><a class="text-muted" href="https://github.com/cra1gg/tweetverifier">Tweet Verifier</a></li>-->
+                <!--                    <li><a class="text-muted" href="https://github.com/cra1gg/countingbot">Counting Bot</a></li>-->
+                <!--                    <li><a class="text-muted" href="https://github.com/cra1gg/ebayresellerapp">Ebay Reseller</a></li>-->
+                <!--                </ul>-->
             </div>
             <div class="col-6 col-md">
-                <h5>shmkane's Other Projects</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Resource</a></li>
-                    <li><a class="text-muted" href="#">Resource name</a></li>
-                    <li><a class="text-muted" href="#">Another resource</a></li>
-                    <li><a class="text-muted" href="#">Final resource</a></li>
-                </ul>
+                <h5><a href="https://shmkane.com/">Soham's Other Projects</a></h5>
+                <!--                <ul class="list-unstyled text-small">-->
+                <!--                    <li><a class="text-muted" href="#">Resource</a></li>-->
+                <!--                    <li><a class="text-muted" href="#">Resource name</a></li>-->
+                <!--                    <li><a class="text-muted" href="#">Another resource</a></li>-->
+                <!--                    <li><a class="text-muted" href="#">Final resource</a></li>-->
+                <!--                </ul>-->
             </div>
         </div>
     </footer>

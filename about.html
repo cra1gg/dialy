@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Custom styles for this template -->
-    <link href="css/info_styles.css" rel="stylesheet">
+    <link href="css/index_styles.css" rel="stylesheet">
 
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-app.js"></script>
@@ -23,54 +23,78 @@
     <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-database.js"></script>
 </head>
 
-<body class="text-center">
-
-<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-    <header class="masthead mb-auto">
-        <div class="inner">
-            <h3 class="masthead-brand">Phone2Words</h3>
-            <nav class="nav nav-masthead justify-content-center">
-                <a class="nav-link" href="index.html">Home</a>
-                <a class="nav-link active" href="#">About</a>
-                <a class="nav-link" href="index.html#more">More Projects</a>
-            </nav>
+<body class="bg-dark">
+<div>
+    <nav class="site-header py-1 sticky-top"> <!-- can also add  "sticky-top" -->
+        <div class="container d-flex flex-column flex-md-row justify-content-between">
+            <a class="py-2" href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="d-block mx-auto">
+                    <circle cx="10" cy="10" r="7"></circle>
+                    <line x1="3" y1="10" x2="3" y2="100"></line>
+                </svg>
+            </a>
+            <a class="py-2 d-none d-md-inline-block" href="about.html">About</a>
+            <a class="py-2 d-none d-md-inline-block" href="#more">More Projects</a>
         </div>
-    </header>
+    </nav>
 
-    <main role="main" class="inner cover">
-        <h1 class="cover-heading">Inspiration</h1>
-        <p class="lead">This website was heavily influenced by What3words. The founders of Phone2words really loved the idea of</p>
-        <p class="lead">
-            <a href="http://what3words.com" class="btn btn-lg btn-secondary">Check Them out</a>
-        </p>
-    </main>
+    <div class="position-relative text-center">
+        <div class="col-md-5 mx-auto my-5">
+            <h1 class="display-4 font-weight-normal text-white-50">Phone2Words</h1>
+            <a class="btn btn-outline-secondary" href="index.html">Try it now</a>
 
-    <hr>
+        </div>
+    </div>
 
-    <main role="main" class="inner cover">
-        <h1 class="cover-heading">Something Else</h1>
-        <p class="lead">(Idk github maybe) Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.</p>
-        <p class="lead">
-            <a href="https://github.com/cra1gg/phone2word/" class="btn btn-lg btn-secondary">Check Us out</a>
-        </p>
-    </main>
+    <div>
+        <h2 class="text-white-50 text-center mx-auto">About Us</h2>
+        <h6 class="text-white-50 text-center mx-auto">Phone2Words's inspiration came from a project called <a
+                href="https://what3words.com/">What3Words</a>: a tool that can convert any location on Earth into 3
+            words.
+            <br>We strive to reach a similar goal -- mapping every 10-digit phone number to 2 words that are easy to
+            remember.</h6>
+    </div>
 
-    <footer class="mastfoot mt-auto">
+    <footer class="container py-5">
+        <div class="row">
+            <div class="col-12 col-md">
+                <small class="d-block mb-3 text-muted"><3</small>
+            </div>
+            <div id="more" class="col-6 col-md">
+                <h5><a href="https://cra1g.ca/currentprojects.html">Craig's Other Projects</a></h5>
+                <!--                <ul class="list-unstyled text-small">-->
+                <!--                    <li><a class="text-muted" href="https://github.com/cra1gg/wordify">Wordify</a></li>-->
+                <!--                    <li><a class="text-muted" href="https://github.com/cra1gg/tweetverifier">Tweet Verifier</a></li>-->
+                <!--                    <li><a class="text-muted" href="https://github.com/cra1gg/countingbot">Counting Bot</a></li>-->
+                <!--                    <li><a class="text-muted" href="https://github.com/cra1gg/ebayresellerapp">Ebay Reseller</a></li>-->
+                <!--                </ul>-->
+            </div>
+            <div class="col-6 col-md">
+                <h5><a href="https://shmkane.com/">Soham's Other Projects</a></h5>
+                <!--                <ul class="list-unstyled text-small">-->
+                <!--                    <li><a class="text-muted" href="#">Resource</a></li>-->
+                <!--                    <li><a class="text-muted" href="#">Resource name</a></li>-->
+                <!--                    <li><a class="text-muted" href="#">Another resource</a></li>-->
+                <!--                    <li><a class="text-muted" href="#">Final resource</a></li>-->
+                <!--                </ul>-->
+            </div>
+        </div>
     </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
 </div>
-
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"><\/script>')</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
 </body>
 </html>

@@ -36,8 +36,8 @@ async function getResult() {
 
 async function getPhone(){
     var words = document.getElementById("input").value;
-    var word1 = words.split(":")[0];
-    var word2 = words.split(":")[1];
+    var word1 = words.split(":")[0].toLowerCase();
+    var word2 = words.split(":")[1].toLowerCase();
     var ref = database.ref();
     var phone1 = ref.child('phonemappings').orderByChild('word').equalTo(word1).once("value")
     var phone2 = ref.child('phonemappings').orderByChild('word').equalTo(word2).once("value")
@@ -77,10 +77,10 @@ async function getWords(){
         var resultword1;
         var resultword2;
         values[0].forEach(function(data) {
-            resultword1 = data.child("word").val();
+            resultword1 = data.child("word").val().toLowerCase();
         });
         values[1].forEach(function(data) {
-            resultword2 = data.child("word").val();
+            resultword2 = data.child("word").val().toLowerCase();
         });
         document.getElementById('result').innerHTML = resultword1 + ":" + resultword2;
         document.getElementById("result").style.display = 'inline-block';

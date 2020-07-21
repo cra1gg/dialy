@@ -76,6 +76,21 @@ async function getPhone(){
     
 }
 
+async function autoComplete(){
+    var ref = database.ref();
+    //var phone1 = ref.child('phonemappings').orderByChild('word').equalTo(word1).once("value")
+    queryString = document.getElementById("input").value;
+    var promise1 = ref.child('phonemappings').orderByChild('word').startAt(queryString).endAt(queryString + '\uf8ff').once("value")
+    promise1.then((value2) =>
+    {
+        value2.forEach(function(data)
+        {
+            console.log(data.child("word").val())
+        });
+    });
+    //console.log(ref.child('phonemappings/word').startAt(queryString).endAt(queryString + '\uf8ff').limit(5));
+}
+
 async function getWords(){
     var phone = document.getElementById("input").value;
     first_num = phone.slice(0, 5);
@@ -102,3 +117,5 @@ async function getWords(){
 document.getElementById("Submit").addEventListener("click", getResult);
 document.getElementById("result").style.display = 'none';
 document.getElementById("error").style.display = 'none';
+document.getElementById("input").addEventListener("input", autoComplete);
+

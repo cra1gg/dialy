@@ -237,10 +237,15 @@ function autocomplete(inp) {
                     
                     /*close the list of autocompleted values,
                     (or any other open lists of autocompleted values:*/
-                    closeAllLists();
                     if (two_words){
                         getResult();
                     }
+                    else {
+                        inp.value = inp.value + ":";
+                        inp.dispatchEvent(new Event('input', { bubbles: true }));
+
+                    }
+                    closeAllLists();
                 });
                 a.appendChild(b);
             }

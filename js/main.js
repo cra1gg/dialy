@@ -192,6 +192,7 @@ function autocomplete(inp) {
     inp.addEventListener("input", function(e) {
         arr = [];
         var wordformat = /^[A-z]+:[A-z]*$/;
+        var two_words = false;
         getAutocomplete().then((value2) =>
         {
             if (document.getElementById("input").value.match(wordformat)) {
@@ -199,6 +200,7 @@ function autocomplete(inp) {
                 {
                     arr.push(first_word + data.child("word").val())
                 });
+                two_words = true;
             }
             else {
                 value2.forEach(function(data)
@@ -232,9 +234,13 @@ function autocomplete(inp) {
                     b.addEventListener("click", function(e) {
                     /*insert the value for the autocomplete text field:*/
                     inp.value = this.getElementsByTagName("input")[0].value;
+                    
                     /*close the list of autocompleted values,
                     (or any other open lists of autocompleted values:*/
                     closeAllLists();
+                    if (two_words){
+                        getResult();
+                    }
                 });
                 a.appendChild(b);
             }

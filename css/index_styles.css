@@ -95,6 +95,7 @@ input {
   background-color: #f1f1f1;
   padding: 10px;
   font-size: 16px;
+  text-align: center; 
 }
 input[type=text] {
   background-color: #f1f1f1;

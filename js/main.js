@@ -77,6 +77,7 @@ async function getPhone(){
 }
 
 async function autoComplete(){
+    console.log("---------------------------------------------------------------------------------")
     var ref = database.ref();
     //var phone1 = ref.child('phonemappings').orderByChild('word').equalTo(word1).once("value")
     queryString = document.getElementById("input").value;

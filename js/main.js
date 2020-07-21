@@ -57,11 +57,21 @@ async function getPhone(){
             document.getElementById("error").style.display = 'inline-block';
         }
         else {
-            document.getElementById('result').innerHTML = "(" + result.slice(0, 3) + ") " + result.slice(3, 6) + "-" + result.slice(6, 10);
-            document.getElementById("result").style.display = 'inline-block';
+            fetch('http://apilayer.net/api/validate?format=1&number=1' + result + '&access_key=a81a028c96fe1f4a4b906b22ae479cea')
+            .then((resp) => resp.json())
+            .then(function(data) {
+                console.log(data)
+                document.getElementById('result').innerHTML = JSON.stringify(data);
+                document.getElementById("result").style.display = 'inline-block';
+            })
+            .catch(function(error) {
+                console.log(error);
+            });  
+            
         }
         
     })
+    
 }
 
 async function getWords(){

@@ -61,8 +61,10 @@ async function getPhone(){
             .then((resp) => resp.json())
             .then(function(data) {
                 console.log(data)
-                document.getElementById('result').innerHTML = JSON.stringify(data);
+                var formatted = `Valid` + data.valid + "Number" + data.number + "\n\Local Format" + data.local_format + "\n\International Format" + data.international_format + "\n\Country Prefix" + data.country_prefix + "\n\Country Code" + data.country_code + "\n\Country Name" + data.country_name + "\n\City" + data.location + "\n\Carrier" + data.carrier + "\n\Line Type" + data.line_type
+                document.getElementById('result').innerHTML = formatted;
                 document.getElementById("result").style.display = 'inline-block';
+                //Add case for surpassing api call limit
             })
             .catch(function(error) {
                 console.log(error);

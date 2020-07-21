@@ -77,18 +77,46 @@ async function getPhone(){
 }
 
 async function autoComplete(){
-    console.log("---------------------------------------------------------------------------------")
     var ref = database.ref();
-    //var phone1 = ref.child('phonemappings').orderByChild('word').equalTo(word1).once("value")
-    queryString = document.getElementById("input").value;
-    var promise1 = ref.child('phonemappings').orderByChild('word').startAt(queryString).endAt(queryString + '\uf8ff').limitToFirst(20).once("value")
-    promise1.then((value2) =>
-    {
-        value2.forEach(function(data)
+    var phoneformat = /^\d{10}$/;
+    var wordformat = /^[A-z]+:[A-z]*$/;
+    if (document.getElementById("input").value.match(phoneformat)){
+        document.getElementById("error").style.display = 'none';
+        getWords();
+    }
+    else if (document.getElementById("input").value.match(wordformat)){
+        words = document.getElementById("input").value;
+        first_word = words.split(":")[0] + ":";
+        if (words.split(":").length < 2){
+            queryString = "a";
+        }
+        else{
+            queryString = words.split(":")[1];
+        }
+        
+        var promise1 = ref.child('phonemappings').orderByChild('word').startAt(queryString).endAt(queryString + '\uf8ff').limitToFirst(20).once("value")
+        promise1.then((value2) =>
         {
-            console.log(data.child("word").val())
+            value2.forEach(function(data)
+            {
+                console.log(first_word + data.child("word").val())
+            });
         });
-    });
+        
+    }
+    else {
+        //var phone1 = ref.child('phonemappings').orderByChild('word').equalTo(word1).once("value")
+        queryString = document.getElementById("input").value;
+        var promise1 = ref.child('phonemappings').orderByChild('word').startAt(queryString).endAt(queryString + '\uf8ff').limitToFirst(20).once("value")
+        promise1.then((value2) =>
+        {
+            value2.forEach(function(data)
+            {
+                console.log(data.child("word").val())
+            });
+        });
+    }
+    
     //console.log(ref.child('phonemappings/word').startAt(queryString).endAt(queryString + '\uf8ff').limit(5));
 }
 

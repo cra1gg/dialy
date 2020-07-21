@@ -127,15 +127,6 @@ async function getAutocomplete(){
         
         var promise1 = ref.child('phonemappings').orderByChild('word').startAt(queryString).endAt(queryString + '\uf8ff').limitToFirst(20).once("value")
         return promise1;
-        promise1.then((value2) =>
-        {
-            value2.forEach(function(data)
-            {
-                arr.push(first_word + data.child("word").val())
-            });
-            console.log(arr);
-            return arr;
-        });
         
     }
     else {
@@ -143,15 +134,6 @@ async function getAutocomplete(){
         queryString = document.getElementById("input").value;
         var promise1 = ref.child('phonemappings').orderByChild('word').startAt(queryString).endAt(queryString + '\uf8ff').limitToFirst(20).once("value")
         return promise1;
-        promise1.then((value2) =>
-        {
-            value2.forEach(function(data)
-            {
-                arr.push(data.child("word").val())
-            });
-            console.log(arr);
-            return arr;
-        });
     }
     
     //console.log(ref.child('phonemappings/word').startAt(queryString).endAt(queryString + '\uf8ff').limit(5));

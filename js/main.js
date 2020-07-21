@@ -80,7 +80,7 @@ async function autoComplete(){
     var ref = database.ref();
     //var phone1 = ref.child('phonemappings').orderByChild('word').equalTo(word1).once("value")
     queryString = document.getElementById("input").value;
-    var promise1 = ref.child('phonemappings').orderByChild('word').startAt(queryString).endAt(queryString + '\uf8ff').once("value")
+    var promise1 = ref.child('phonemappings').orderByChild('word').startAt(queryString).endAt(queryString + '\uf8ff').limitToFirst(20).once("value")
     promise1.then((value2) =>
     {
         value2.forEach(function(data)

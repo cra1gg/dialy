@@ -55,10 +55,15 @@
                 <h2 class="display-5">Enter a phone number</h2>
                 <p class="lead text-white-50">Or a PhoneWord to convert to a number</p>
             </div>
+            
             <div class="mx-auto" style="width: 60%; height: 200px; border-radius: 21px 21px 0 0;">
                 <form class="">
                     <div class="form-label-group">
-                        <input type="text" id="input" class="form-control" placeholder="4169191234 or apple:potato" autofocus>
+                        <form autocomplete="off">
+                            <div class="autocomplete" style="width:300px;">
+                              <input class="form-control" id="input" type="text" name="myCountry" placeholder="4169191234 or apple:potato">
+                            </div>
+                        </form>
                         <label for="input"></label>
                     </div>
 

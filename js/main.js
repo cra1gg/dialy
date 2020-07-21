@@ -15,7 +15,10 @@ var database = firebase.database();
 
 async function getResult() {
     document.getElementById("error").style.display = 'none';
-    document.getElementById("result").style.display = 'none';
+    document.getElementById("words_result").style.display = 'none';
+    document.getElementById("map").style.display = 'none';
+    document.getElementById("map_result").style.display = 'none';
+    document.getElementById("phone_result").style.display = 'none';
 
     event.preventDefault();
 
@@ -24,6 +27,7 @@ async function getResult() {
 
     if (document.getElementById("input").value.match(phoneformat)) {
         document.getElementById("error").style.display = 'none';
+
         getWords();
     } else if (document.getElementById("input").value.match(wordformat)) {
         document.getElementById("error").style.display = 'none';
@@ -46,7 +50,7 @@ async function getPhone() {
 
 
     Promise.all([phone1, phone2]).then((values) => {
-        document.getElementById('result').innerHTML = "Loading results...";
+        document.getElementById('phone_result').innerHTML = "Loading results...";
 
         var resultnum1;
         var resultnum2;
@@ -60,25 +64,45 @@ async function getPhone() {
         if (isNaN(result)) {
             document.getElementById('error').innerHTML = "Invalid PhoneWord. Check the input and try again.";
             document.getElementById("error").style.display = 'inline-block';
-        }
-        else {
+        } else {
             fetch('http://apilayer.net/api/validate?format=1&number=1' + result + '&access_key=a81a028c96fe1f4a4b906b22ae479cea')
-            .then((resp) => resp.json())
-            .then(function(data) {
-                console.log(data)
-                var formatted = `Valid` + data.valid + "Number" + data.number + "\n\Local Format" + data.local_format + "\n\International Format" + data.international_format + "\n\Country Prefix" + data.country_prefix + "\n\Country Code" + data.country_code + "\n\Country Name" + data.country_name + "\n\City" + data.location + "\n\Carrier" + data.carrier + "\n\Line Type" + data.line_type
-                document.getElementById('result').innerHTML = formatted;
-                document.getElementById("result").style.display = 'inline-block';
-                //Add case for surpassing api call limit
-            })
-            .catch(function(error) {
-                console.log(error);
-            });  
-            
+                .then((resp) => resp.json())
+                .then(function (data) {
+                    console.log(data)
+                    var formatted = `Valid` + data.valid + "Number" + data.number + "\n\Local Format"
+                        + data.local_format + "\n\International Format" + data.international_format
+                        + "\n\Country Prefix" + data.country_prefix + "\n\Country Code" + data.country_code
+                        + "\n\Country Name" + data.country_name + "\n\City" + data.location + "\n\Carrier"
+                        + data.carrier + "\n\Line Type" + data.line_type
+
+                    //https://www.google.com/maps/search/ottowa+canada
+                    //https://maps.google.com/maps?q=chicago&t=&z=13&ie=UTF8&iwloc=&output=embed
+                    document.getElementById("map_result").style.display = 'inline-block';
+                    document.getElementById("map").style.display = 'inline-block';
+
+                    document.getElementById("phone_result").style.display = 'inline-block';
+                    document.getElementById('phone_result').innerHTML = "(" + result.slice(0, 3) + ") " + result.slice(3, 6) + "-" + result.slice(6, 10);
+
+
+                    var mapLoc = data.location + "+" + data.country_name;
+                    console.log(mapLoc);
+
+                    document.getElementById('map').src = "https://maps.google.com/maps?q=" + mapLoc + "&t=&z=13&ie=UTF8&iwloc=&output=embed";
+
+
+                    document.getElementById('location').innerHTML = data.location + ", " + data.country_name;
+                    document.getElementById('carrier').innerHTML = +data.carrier + data.line_type;
+
+                    //Add case for surpassing api call limit
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
         }
 
     })
-    
+
 }
 
 async function getAutocomplete(){
@@ -154,8 +178,8 @@ async function getWords() {
             resultword2 = data.child("word").val();
         });
 
-        document.getElementById('result').innerHTML = resultword1 + ":" + resultword2;
-        document.getElementById("result").style.display = 'inline-block';
+        document.getElementById("words_result").style.display = 'inline-block';
+        document.getElementById('words_result').innerHTML = resultword1 + ":" + resultword2;
     })
 }
 
@@ -275,8 +299,11 @@ function autocomplete(inp) {
   }
 
 document.getElementById("Submit").addEventListener("click", getResult);
-document.getElementById("result").style.display = 'none';
+document.getElementById("words_result").style.display = 'none';
 document.getElementById("error").style.display = 'none';
+document.getElementById("map").style.display = 'none';
+document.getElementById("map_result").style.display = 'none';
+document.getElementById("phone_result").style.display = 'none';
 //document.getElementById("input").addEventListener("input", autoComplete);
 autocomplete(document.getElementById("input"))
 

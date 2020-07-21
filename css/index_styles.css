@@ -1,6 +1,9 @@
 /*
  * Globals
  */
+html{
+    scroll-behavior: smooth;
+}
 
 /* Links */
 a,
@@ -26,42 +29,18 @@ a:hover {
 
 html,
 body {
-    height: 100%;
-    background-color: #333;
+    background-color: #343a40;
 }
 
 body {
+    overflow:auto;
     font: 16px Arial;
-    display: -ms-flexbox;
-    display: -webkit-box;
-    display: flex;
-    -ms-flex-pack: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    color: #fff;
-    text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
-    box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
 }
-
-.cover-container {
-    max-width: 42em;
-}
-
 /*
  * Header
  */
 .masthead {
     margin-bottom: 2rem;
-}
-
-.masthead-brand {
-    margin-bottom: 0;
-}
-
-.site-header {
-    background-color: rgba(0, 0, 0, .85);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    backdrop-filter: saturate(180%) blur(20px);
 }
 
 .nav-new {

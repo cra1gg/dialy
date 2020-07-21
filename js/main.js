@@ -81,6 +81,7 @@ async function getAutocomplete(){
     var phoneformat = /^\d{10}$/;
     var wordformat = /^[A-z]+:[A-z]*$/;
     var arr = [];
+    //Shift if statement to other autocomplete function
     if (document.getElementById("input").value.match(phoneformat)){
         document.getElementById("error").style.display = 'none';
         getWords();
@@ -173,8 +174,6 @@ function autocomplete(inp) {
                     arr.push(data.child("word").val())
                 });
             }
-            
-            console.log(arr);
             var a, b, i, val = this.value;
             /*close any already open lists of autocompleted values*/
             closeAllLists();

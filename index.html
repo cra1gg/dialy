@@ -24,17 +24,18 @@
             crossorigin="anonymous"></script>    <!-- Custom styles for this site -->
     <link href="css/index_styles.css" rel="stylesheet">
 
+
 </head>
 
-<body class="bg-dark overflow-hidden">
+<body class="bg-dark">
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-dark nav-masthead">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand site-header" href="index.html">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                  class="d-block mx-auto">
-                <circle cx="10" cy="10" r="7"></circle>
-                <line x1="3" y1="10" x2="3" y2="100"></line>
+                <circle cx="10" cy="10" r="7"> </circle>
+                <line x1="3" y1="10" x2="3" y2="100"> </line>
             </svg>
         </a>
 
@@ -61,8 +62,8 @@
         </div>
     </div>
 
-    <div id="convert" class=" flex-md-equal w-100 ">
-        <div class="text-center text-white overflow-hidden">
+    <div id="convert" class="flex-md-equal w-100">
+        <div class="text-center text-white">
             <div class="my-3 py-3">
                 <h2 class="display-5">Enter 10-Digit Phone Number</h2>
                 <p class="lead text-white-50">Or a Phone-Word</p>
@@ -75,20 +76,36 @@
                         <label for="input"> </label>
                     </div>
 
-                    <button class="btn btn-lg btn-primary btn-block" style="width: 50%; margin: 0 auto; display: block;"
-                            id="Submit">Convert
-                    </button>
-                    <br>
-                    <label id="result" class="alert alert-success" role="alert"> </label>
-                    <label id="error" class="alert alert-danger" role="alert"> </label>
+                    <a class="btn btn-lg btn-primary btn-block" style="width: 50%; margin: 0 auto; display: block;"
+                       id="Submit" onClick="document.getElementById('words_result').scrollIntoView();">Convert
+                    </a>
                 </form>
+                <br>
+                <label id="words_result" class="alert alert-success" role="alert"> </label>
+                <label id="error" class="alert alert-danger" role="alert"> </label>
             </div>
 
         </div>
 
     </div>
+    <div id="map_result" class="alert alert-success flex-md-equal w-100" style="text-align: center;overflow: auto; height: 35em">
+        <label id="phone_result" class="alert alert-success" role="alert"> </label>
 
-    <footer class="footer">
+        <!--Google map-->
+        <div style="text-align: center;">
+            <p>Approximate origin:</p>
+            <p id="location"> </p>
+            <p id="carrier"> </p>
+            <iframe id="map"
+                    src="https://maps.google.com/maps?q=toronto&t=&z=10&ie=UTF8&iwloc=&output=embed"
+                    frameborder="0"
+                    style="border:0;height: 30em; width: 100%" allowfullscreen></iframe>
+        </div>
+        <p id="bottom"> </p>
+    </div>
+
+
+    <footer class="footer bg-dark">
         <div class="container text-center">
             <p class="text-muted credit">Made by <a
                     href="https://cra1g.ca/currentprojects.html">Cra1g</a> & <a
@@ -107,10 +124,9 @@
     <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
     <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-database.js"></script>
-
     <script src="js/main.js"></script>
-    <script src="js/bootstrap/jquery-slim.min.js"></script>
-    <script src="js/bootstrap/popper.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </div>
 </body>
 </html>

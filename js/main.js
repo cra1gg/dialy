@@ -190,6 +190,11 @@ function autocomplete(inp) {
                     arr.push(data.child("word").val())
                 });
             }
+            arr.sort(function(a, b){
+                // ASC  -> a.length - b.length
+                // DESC -> b.length - a.length
+                return a.length - b.length;
+              });
             var a, b, i, val = this.value;
             /*close any already open lists of autocompleted values*/
             closeAllLists();

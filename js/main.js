@@ -125,14 +125,14 @@ async function getAutocomplete(){
             queryString = words.split(":")[1];
         }
         
-        var promise1 = ref.child('phonemappings').orderByChild('word').startAt(queryString).endAt(queryString + '\uf8ff').limitToFirst(20).once("value")
+        var promise1 = ref.child('phonemappings').orderByChild('word').startAt(queryString).endAt(queryString + '\uf8ff').limitToFirst(10).once("value")
         return promise1;
         
     }
     else {
         //var phone1 = ref.child('phonemappings').orderByChild('word').equalTo(word1).once("value")
         queryString = document.getElementById("input").value;
-        var promise1 = ref.child('phonemappings').orderByChild('word').startAt(queryString).endAt(queryString + '\uf8ff').limitToFirst(20).once("value")
+        var promise1 = ref.child('phonemappings').orderByChild('word').startAt(queryString).endAt(queryString + '\uf8ff').limitToFirst(10).once("value")
         return promise1;
     }
     

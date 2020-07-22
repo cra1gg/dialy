@@ -127,15 +127,6 @@ async function getAutocomplete(){
         
         var promise1 = ref.child('phonemappings').orderByChild('word').startAt(queryString).endAt(queryString + '\uf8ff').limitToFirst(20).once("value")
         return promise1;
-        promise1.then((value2) =>
-        {
-            value2.forEach(function(data)
-            {
-                arr.push(first_word + data.child("word").val())
-            });
-            console.log(arr);
-            return arr;
-        });
         
     }
     else {
@@ -143,15 +134,6 @@ async function getAutocomplete(){
         queryString = document.getElementById("input").value;
         var promise1 = ref.child('phonemappings').orderByChild('word').startAt(queryString).endAt(queryString + '\uf8ff').limitToFirst(20).once("value")
         return promise1;
-        promise1.then((value2) =>
-        {
-            value2.forEach(function(data)
-            {
-                arr.push(data.child("word").val())
-            });
-            console.log(arr);
-            return arr;
-        });
     }
     
     //console.log(ref.child('phonemappings/word').startAt(queryString).endAt(queryString + '\uf8ff').limit(5));
@@ -192,6 +174,7 @@ function autocomplete(inp) {
     inp.addEventListener("input", function(e) {
         arr = [];
         var wordformat = /^[A-z]+:[A-z]*$/;
+        var two_words = false;
         getAutocomplete().then((value2) =>
         {
             if (document.getElementById("input").value.match(wordformat)) {
@@ -199,6 +182,7 @@ function autocomplete(inp) {
                 {
                     arr.push(first_word + data.child("word").val())
                 });
+                two_words = true;
             }
             else {
                 value2.forEach(function(data)
@@ -232,8 +216,17 @@ function autocomplete(inp) {
                     b.addEventListener("click", function(e) {
                     /*insert the value for the autocomplete text field:*/
                     inp.value = this.getElementsByTagName("input")[0].value;
+                    
                     /*close the list of autocompleted values,
                     (or any other open lists of autocompleted values:*/
+                    if (two_words){
+                        getResult();
+                    }
+                    else {
+                        inp.value = inp.value + ":";
+                        inp.dispatchEvent(new Event('input', { bubbles: true }));
+
+                    }
                     closeAllLists();
                 });
                 a.appendChild(b);

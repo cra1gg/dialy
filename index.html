@@ -34,8 +34,8 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                  class="d-block mx-auto">
-                <circle cx="10" cy="10" r="7"> </circle>
-                <line x1="3" y1="10" x2="3" y2="100"> </line>
+                <circle cx="10" cy="10" r="7"></circle>
+                <line x1="3" y1="10" x2="3" y2="100"></line>
             </svg>
         </a>
 
@@ -56,58 +56,57 @@
         </div>
     </nav>
 
-    <div class="position-relative text-center">
-        <div class="mx-auto my-5">
-            <h1 class="display-4 font-weight-normal text-white-50">Phone2Words</h1>
-        </div>
+    <div class="position-relative text-center mx-auto my-5">
+        <h1 class="display-4 font-weight-normal text-white-50">Phone2Words</h1>
+    </div>
+    <div id="convert" class="text-center text-white">
+        <h2>Enter 10-Digit Phone Number</h2>
+        <p class="lead text-white-50">Or a Phone-Word</p>
+
+        <form autocomplete="off" class="">
+            <div class="autocomplete" style="width: 75%; height: 3em; border-radius: 21px 21px 0 0;">
+                <input class="form-control" id="input" type="text" name="formInput"
+                       placeholder="4169191234 or apple:potato">
+<!--                <button id="Submit"class="form-inline  position-relative btn btn-outline-success"-->
+<!--                        type="submit">Search-->
+<!--                </button>-->
+            </div>
+            <label for="input"> </label>
+
+            <a class="btn btn-lg btn-primary btn-block" style="width: 25%; margin: 0 auto; display: block;"
+               id="Submit" onClick="document.getElementById('words_result').scrollIntoView();">Convert
+            </a>
+
+        </form>
+
+        <br>
+        <label id="words_result" class="alert alert-success" role="alert"> </label>
+        <label id="error" class="alert alert-danger" role="alert"> </label>
     </div>
 
-    <div id="convert" class="flex-md-equal w-100">
-        <div class="text-center text-white">
-            <div class="my-3 py-3">
-                <h2 class="display-5">Enter 10-Digit Phone Number</h2>
-                <p class="lead text-white-50">Or a Phone-Word</p>
+    <div class="row">
+        <div class="col">
+            <div class="collapse multi-collapse" id="multiCollapseExample1">
+                <div class="card card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                </div>
             </div>
-
-
-            
-            <div class="mx-auto" style="width: 60%; height: 200px; border-radius: 21px 21px 0 0;">                
-                <form class="" autocomplete="off">
-                    <div class="form-label-group">
-                        <form autocomplete="off">
-                            <div class="autocomplete" style="width:300px;">
-                              <input class="form-control" id="input" type="text" name="myCountry" placeholder="4169191234 or apple:potato">
-                            </div>
-                        </form>
-                        <label for="input"></label>
-                    </div>
-
-                    <a class="btn btn-lg btn-primary btn-block" style="width: 50%; margin: 0 auto; display: block;"
-                       id="Submit" onClick="document.getElementById('words_result').scrollIntoView();">Convert
-                    </a>
-                </form>
-                <br>
-                <label id="words_result" class="alert alert-success" role="alert"> </label>
-                <label id="error" class="alert alert-danger" role="alert"> </label>
-            </div>
-
         </div>
-
-    </div>
-    <div id="map_result" class="alert alert-success flex-md-equal w-100" style="text-align: center;overflow: auto; height: 35em">
+    <div id="map_result" class="alert alert-success flex-md-equal w-100"
+         style="text-align: center;overflow: auto; height: 35em">
         <label id="phone_result" class="alert alert-success" role="alert"> </label>
 
         <!--Google map-->
         <div style="text-align: center;">
             <p>Approximate origin:</p>
-            <p id="location"> </p>
-            <p id="carrier"> </p>
+            <p id="location"></p>
+            <p id="carrier"></p>
             <iframe id="map"
-                    src="https://maps.google.com/maps?q=toronto&t=&z=10&ie=UTF8&iwloc=&output=embed"
+                    src=""
                     frameborder="0"
                     style="border:0;height: 30em; width: 100%" allowfullscreen></iframe>
         </div>
-        <p id="bottom"> </p>
+        <p id="bottom"></p>
     </div>
 
 

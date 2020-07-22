@@ -27,7 +27,6 @@ async function getResult() {
 
     if (document.getElementById("input").value.match(phoneformat)) {
         document.getElementById("error").style.display = 'none';
-
         getWords();
     } else if (document.getElementById("input").value.match(wordformat)) {
         document.getElementById("error").style.display = 'none';
@@ -90,8 +89,8 @@ async function getPhone() {
                     document.getElementById('map').src = "https://maps.google.com/maps?q=" + mapLoc + "&t=&z=13&ie=UTF8&iwloc=&output=embed";
 
 
-                    document.getElementById('location').innerHTML = data.location + ", " + data.country_name;
-                    document.getElementById('carrier').innerHTML = +data.carrier + data.line_type;
+                    document.getElementById('location').innerHTML = data.location + " " + data.country_name;
+                    document.getElementById('carrier').innerHTML = data.carrier + " " + data.line_type;
 
                     //Add case for surpassing api call limit
                 })
@@ -140,6 +139,11 @@ async function getAutocomplete(){
 }
 
 async function getWords() {
+    document.getElementById("words_result").style.display = 'none';
+    document.getElementById("error").style.display = 'none';
+    document.getElementById("map").style.display = 'none';
+    document.getElementById("map_result").style.display = 'none';
+    document.getElementById("phone_result").style.display = 'none';
     var phone = document.getElementById("input").value;
     first_num = phone.slice(0, 5);
     second_num = phone.slice(5);

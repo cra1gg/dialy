@@ -40,8 +40,8 @@ async function getResult() {
 
 async function getPhone() {
     var words = document.getElementById("input").value;
-    var word1 = words.split(":")[0];
-    var word2 = words.split(":")[1];
+    var word1 = words.split(":")[0].toLowerCase();
+    var word2 = words.split(":")[1].toLowerCase();
 
     var ref = database.ref();
     var phone1 = ref.child('phonemappings').orderByChild('word').equalTo(word1).once("value")
@@ -155,13 +155,11 @@ async function getWords() {
     Promise.all([word1, word2]).then((values) => {
         var resultword1;
         var resultword2;
-
-        values[0].forEach(function (data) {
-            resultword1 = data.child("word").val();
+        values[0].forEach(function(data) {
+            resultword1 = data.child("word").val().toLowerCase();
         });
-
-        values[1].forEach(function (data) {
-            resultword2 = data.child("word").val();
+        values[1].forEach(function(data) {
+            resultword2 = data.child("word").val().toLowerCase();
         });
 
         document.getElementById("words_result").style.display = 'inline-block';

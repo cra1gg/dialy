@@ -39,7 +39,7 @@ async function getResult() {
 }
 
 async function getPhone() {
-    var words = document.getElementById("input").value;
+    var words = document.getElementById("input").value.trimLeft(" ").trimRight(" ");
     var word1 = words.split(":")[0].toLowerCase();
     var word2 = words.split(":")[1].toLowerCase();
 
@@ -67,6 +67,7 @@ async function getPhone() {
             fetch('http://apilayer.net/api/validate?format=1&number=1' + result + '&access_key=a81a028c96fe1f4a4b906b22ae479cea')
                 .then((resp) => resp.json())
                 .then(function (data) {
+                    //Remove this
                     console.log(data)
                     var formatted = `Valid` + data.valid + "Number" + data.number + "\n\Local Format"
                         + data.local_format + "\n\International Format" + data.international_format
@@ -144,7 +145,7 @@ async function getWords() {
     document.getElementById("map").style.display = 'none';
     document.getElementById("map_result").style.display = 'none';
     document.getElementById("phone_result").style.display = 'none';
-    var phone = document.getElementById("input").value;
+    var phone = document.getElementById("input").value.trimLeft(" ").trimRight(" ");
     first_num = phone.slice(0, 5);
     second_num = phone.slice(5);
 
@@ -179,7 +180,7 @@ function autocomplete(inp) {
         var two_words = false;
         getAutocomplete().then((value2) =>
         {
-            if (document.getElementById("input").value.match(wordformat)) {
+            if (document.getElementById("input").value.trimLeft(" ").trimRight(" ").match(wordformat)) {
                 value2.forEach(function(data)
                 {
                     arr.push(first_word + data.child("word").val())

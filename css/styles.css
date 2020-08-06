@@ -1,0 +1,43 @@
+body{
+    background-color: #275799;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+}
+
+.bg-black {
+    background-color: #000000 !important;
+}
+
+.nav_style {
+    height: 1.5em;
+}
+.nav-item:hover,
+.nav-item:focus {
+    background-color: #275799;
+    text-decoration: none;
+}
+
+.navbar-nav.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+}
+
+.active {
+    color: #fff;
+    background-color: #275799;
+}
+
+.footer {
+    color: #17325a;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.border_test {
+    border: 2px solid rgba(0,0,0, 0.25);
+}
+

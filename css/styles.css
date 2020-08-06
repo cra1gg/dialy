@@ -1,0 +1,178 @@
+body {
+    background-color: gray;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url('../assets/bg.jpg');
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: black
+    
+}
+
+/* Sets the colors of the navbar */
+
+.mynav ul {
+    background-color: black;
+    color: white;
+}
+
+
+/* Sets up the display of the navbar */
+
+.mynav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+
+/* Sets up the spacing around the navbar */
+
+.mynav ul {
+    justify-content: space-evenly;
+    padding: 0.5em;
+}
+
+
+/* Sets up the hover actions for navbar */
+
+.mynav a:link,
+a:visited,
+a:active {
+    color: white;
+    text-decoration: none;
+}
+
+.mynav a:hover {
+    color: gainsboro;
+}
+
+.intro p {
+    text-align: center;
+    font-size: x-large;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+    text-align: center;
+}
+
+.forms input{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 45%;
+    height: 60px;
+    font-family: monospace;
+    font-size: 2.3ch;
+    padding: 0;
+}
+
+.forms button{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 45%;
+}
+
+.autocomplete-items div {
+    text-align: center;
+    padding: 5px;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.185);
+    border: 1px solid #d4d4d4;
+}
+
+.autocomplete-items div:hover {
+    background-color: rgba(255, 255, 255, 0.349) !important;
+}
+
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: rgba(255, 255, 255, 0.349) !important;
+}
+
+.input_repeat{
+    padding-bottom: 3em;
+}
+
+.input_repeat, .numbers_result, .words_result{
+    text-align: center;
+}
+
+.words_result .numbers_result {
+    background-color: rgba(0, 0, 0, 0.111);
+}
+
+.words_result button {
+    width: 25%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.words_result h4 {
+    margin: 0;
+}
+
+.words_result p {
+    text-align: center;
+}
+
+.numbers_result  {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.ph_item {
+    text-align: center;
+    padding: 1em;
+}
+.ph_item p{
+    font-size: large;
+    padding: 0;
+    margin: 0;
+}
+
+.ph_item span{
+    font-size: x-large;
+    padding: 0;
+    margin: 0;
+}
+
+.number_options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+    padding-top: 2.5em;
+}
+
+.number_options button{
+    padding: 0;
+    line-height: 100%;
+    width: 5.5em;
+    height: 2.5em;
+}
+
+.map iframe{
+    border:0;
+    height: 28em;
+    width: 100%;
+    padding-left: 1em;
+    padding-right: 2em;
+}
+
+.footer {
+    color: #17325a;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}

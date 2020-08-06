@@ -69,7 +69,8 @@ a:active {
     width: 45%;
     height: 60px;
     font-family: monospace;
-    font-size: xx-large;
+    font-size: 2.3ch;
+    padding: 0;
 }
 
 .forms button{
@@ -125,7 +126,7 @@ a:active {
 
 .numbers_result  {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
 .ph_item {

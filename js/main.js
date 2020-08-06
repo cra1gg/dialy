@@ -186,7 +186,6 @@ function splitAndFormatPhoneNumber(phone) {
 }
 
 async function getAutocomplete() {
-    console.log('Get auto complete');
     var ref = database.ref();
     var phoneformat = /^\d{10}$/;
     var wordformat = /^[A-z]+:[A-z]*$/;
@@ -221,7 +220,6 @@ async function getAutocomplete() {
 }
 // Code related to auto complete
 function autocomplete(inp) {
-    console.log('autocmpl');
     /*the autocomplete function takes two arguments,
     the text field element and an array of possible autocompleted values:*/
     var currentFocus;

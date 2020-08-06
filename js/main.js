@@ -15,10 +15,6 @@ var database = firebase.database();
 
 async function getResult() {
     document.getElementById("error").style.display = 'none';
-    document.getElementById("words_result").style.display = 'none';
-    document.getElementById("map").style.display = 'none';
-    document.getElementById("map_result").style.display = 'none';
-    document.getElementById("phone_result").style.display = 'none';
 
     event.preventDefault();
 
@@ -68,7 +64,7 @@ async function getPhone() {
                 .then((resp) => resp.json())
                 .then(function (data) {
                     console.log(data)
-                    var formatted = `Valid` + data.valid + "Number" + data.number + "\n\Local Format"
+                    var formatted = "Valid" + data.valid + "Number" + data.number + "\n\Local Format"
                         + data.local_format + "\n\International Format" + data.international_format
                         + "\n\Country Prefix" + data.country_prefix + "\n\Country Code" + data.country_code
                         + "\n\Country Name" + data.country_name + "\n\City" + data.location + "\n\Carrier"
@@ -124,14 +120,14 @@ async function getAutocomplete(){
             queryString = words.split(":")[1];
         }
         
-        var promise1 = ref.child('phonemappings').orderByChild('word').startAt(queryString).endAt(queryString + '\uf8ff').limitToFirst(10).once("value")
+        var promise1 = ref.child('phonemappings').orderByChild('word').startAt(queryString).endAt(queryString + '\uf8ff').limitToFirst(4).once("value")
         return promise1;
         
     }
     else {
         //var phone1 = ref.child('phonemappings').orderByChild('word').equalTo(word1).once("value")
         queryString = document.getElementById("input").value;
-        var promise1 = ref.child('phonemappings').orderByChild('word').startAt(queryString).endAt(queryString + '\uf8ff').limitToFirst(10).once("value")
+        var promise1 = ref.child('phonemappings').orderByChild('word').startAt(queryString).endAt(queryString + '\uf8ff').limitToFirst(4).once("value")
         return promise1;
     }
     
@@ -139,11 +135,10 @@ async function getAutocomplete(){
 }
 
 async function getWords() {
-    document.getElementById("words_result").style.display = 'none';
-    document.getElementById("error").style.display = 'none';
-    document.getElementById("map").style.display = 'none';
-    document.getElementById("map_result").style.display = 'none';
-    document.getElementById("phone_result").style.display = 'none';
+    document.getElementById("words_result").style.display = 'initial';
+    document.getElementById("numbers_result").style.display = 'none';
+    document.getElementById("entered").style.display = 'none';
+
     var phone = document.getElementById("input").value;
     first_num = phone.slice(0, 5);
     second_num = phone.slice(5);
@@ -298,12 +293,16 @@ function autocomplete(inp) {
   });
   }
 
-document.getElementById("Submit").addEventListener("click", getResult);
-document.getElementById("words_result").style.display = 'none';
-document.getElementById("error").style.display = 'none';
-document.getElementById("map").style.display = 'none';
-document.getElementById("map_result").style.display = 'none';
-document.getElementById("phone_result").style.display = 'none';
+  function hideAll() {
+    document.getElementById("submit").addEventListener("click", getResult); // Submit Button
+    document.getElementById("words_result").style.display = 'none';
+    document.getElementById("numbers_result").style.display = 'none';
+    document.getElementById("entered").style.display = 'none';
+    document.getElementById("error").style.display = 'none';
+  }
+
+  hideAll();
+
 //document.getElementById("input").addEventListener("input", autoComplete);
 autocomplete(document.getElementById("input"))
 

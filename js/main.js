@@ -149,7 +149,7 @@ async function getPhone() {
                     var mapLoc = data.location + "+" + data.country_name;
                     console.log(mapLoc);
 
-                    document.getElementById('map').src = "https://maps.google.com/maps?q=" + mapLoc + "&t=&z=13&ie=UTF8&iwloc=&output=embed";
+                    document.getElementById('map').src = "https://maps.google.com/maps?q=" + mapLoc + "&t=&z=10&ie=UTF8&iwloc=&output=embed";
                     document.getElementById('line_type').innerHTML = data.line_type;
 
                     //Switch to ternary operator one day

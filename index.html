@@ -8,130 +8,106 @@
     <meta name="author" content="Co-authored by Craig (cra1gg), Soham (shmkane)">
     <link rel="icon" href="assets/favicon.ico">
 
-    <title>Phone2Words</title>
+    <title>Dialy</title>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-            crossorigin="anonymous"></script>
+
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-            crossorigin="anonymous"></script>    <!-- Custom styles for this site -->
-    <link href="css/index_styles.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
-<body class="bg-dark">
-<div class="container">
-    <nav class="navbar navbar-expand-lg navbar-dark nav-masthead">
-        <a class="navbar-brand site-header" href="index.html">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                 class="d-block mx-auto">
-                <circle cx="10" cy="10" r="7"></circle>
-                <line x1="3" y1="10" x2="3" y2="100"></line>
-            </svg>
-        </a>
+<body class="border_test">
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"> </span>
+<nav class="navbar navbar-expand-lg navbar-dark bg-black sticky-top">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="nav_style collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto navbar-center">
+            <li class="nav-item">
+                <a id="home" class="active nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a id="res_nav" class="nav-link" href="#res">Results</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<h1 class="display-2" style="text-align: center">
+    Welcome to Dialy!
+</h1>
+
+
+<h2 class="display-4" style="text-align: center">To get started, enter a phone number or a Dialy</h2>
+
+<br>
+<br>
+
+<form autocomplete="off" class="">
+    <div class="input-group autocomplete" style="margin:auto; width: 75%">
+        <input class="form-control" id="input" type="text" name="formInput"
+               placeholder="4169191234 or apple:potato" style="height: 5em;">
+        <button class="btn btn-secondary" type="button">
+            <i class="fa fa-search"> </i>
         </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="">
-                    <a class="nav-new active" href="index.html">Home</a>
-                </li>
-                <li class="">
-                    <a class="nav-new" href="about.html">About</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="position-relative text-center mx-auto my-5">
-        <h1 class="display-4 font-weight-normal text-white-50">Phone2Words</h1>
     </div>
-    <div id="convert" class="text-center text-white">
-        <h2>Enter 10-Digit Phone Number</h2>
-        <p class="lead text-white-50">Or a Phone-Word</p>
+    <label for="input"> </label>
+</form>
 
-        <form autocomplete="off" class="">
-            <div class="autocomplete" style="width: 75%; height: 3em; border-radius: 21px 21px 0 0;">
-                <input class="form-control" id="input" type="text" name="formInput"
-                       placeholder="4169191234 or apple:potato">
-<!--                <button id="Submit"class="form-inline  position-relative btn btn-outline-success"-->
-<!--                        type="submit">Search-->
-<!--                </button>-->
-            </div>
-            <label for="input"> </label>
 
-            <a class="btn btn-lg btn-primary btn-block" style="width: 25%; margin: 0 auto; display: block;"
-               id="Submit" onClick="document.getElementById('words_result').scrollIntoView();">Convert
-            </a>
-
-        </form>
-
-        <br>
-        <label id="words_result" class="alert alert-success" role="alert"> </label>
-        <label id="error" class="alert alert-danger" role="alert"> </label>
-    </div>
+<div id="res" class="container-xl"
+     style="background-color: #909193; text-align: center; padding-top: 10px; padding-bottom: 10px">
+    <p>You entered: apple:potato</p>
+    <h3>Phone Number: (905) 261 1662</h3>
+    <p>Ours records indicate this is a valid landline</p>
+    <p>Last known carrier: Something Canada Has</p>
+    <p>Country: Canada</p>
+    <p>Approx. City: Toronto</p>
+    <small>This number has been searched <em>34</em> times</small>
 
     <div class="row">
-        <div class="col">
-            <div class="collapse multi-collapse" id="multiCollapseExample1">
-                <div class="card card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                </div>
+        <div class="col-8">
+            <div style="text-align: center;">
+                <p id="location"></p>
+                <p id="carrier"></p>
+                <iframe id="map"
+                        src="https://maps.google.com/maps?q=toronto&t=&z=10&ie=UTF8&iwloc=&output=embed"
+                        frameborder="0"
+                        style="border:0;height: 30em; width: 100%" allowfullscreen></iframe>
             </div>
         </div>
-    <div id="map_result" class="alert alert-success flex-md-equal w-100"
-         style="text-align: center;overflow: auto; height: 35em">
-        <label id="phone_result" class="alert alert-success" role="alert"> </label>
+        <!--        https://maps.google.com/maps?q=toronto&t=&z=10&ie=UTF8&iwloc=&output=embed-->
+        <div class="col-4" style="vertical-align: middle">
+            <br>
+            <div class="my-5 p-3" style="background-color: #10a735">Call Now<i class="fa fa-phone"> </i></div>
+            <br>
+            <div class="my-5 p-3" style="background-color: #c9b11c">Add to Contacts</div>
 
-        <!--Google map-->
-        <div style="text-align: center;">
-            <p>Approximate origin:</p>
-            <p id="location"></p>
-            <p id="carrier"></p>
-            <iframe id="map"
-                    src=""
-                    frameborder="0"
-                    style="border:0;height: 30em; width: 100%" allowfullscreen></iframe>
         </div>
-        <p id="bottom"></p>
     </div>
-
-
-    <footer class="footer bg-dark">
-        <div class="container text-center">
-            <p class="text-muted credit">Made by <a
-                    href="https://cra1g.ca/currentprojects.html">Cra1g</a> & <a
-                    href="https://shmkane.com/">shmkane</a> &copy;Phone2Words 2020
-            </p>
-        </div>
-    </footer>
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-
-    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-app.js"></script>
-    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
-    <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-database.js"></script>
-    <script src="js/main.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 </div>
+
+<br>
+
+<footer class="footer">
+    <div class="container text-center">
+        <p class="credit">Made by <a
+                href="https://cra1g.ca/currentprojects.html">Cra1g</a> & <a
+                href="https://shmkane.com/">shmkane</a> &copy;Dialy 2020
+        </p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>
 </body>
 </html>

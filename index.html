@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
+        integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Dialy | Click, Convert, Call</title>
+</head>
+
+<body>
+    <!-- This is the small navbar -->
+    <div class="mynav">
+        <ul class="">
+            <li class="">
+                <a class="" href="#">Home</a>
+            </li>
+            <li class="">
+                <a class="" href="#results">Results</a>
+            </li>
+            <li class="">
+                <a class="" href="about.html">About</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- spacer -->
+    <div style="height: 4em;"></div>
+
+    <!-- This will be the top of the page right before the form -->
+    <div class="intro">
+        <p>To begin, enter a phone number or a Dialy</p>
+    </div>
+
+    <!-- This section will be the form -->
+    <div class="forms">
+        <form autocomplete="off" class="">
+            <div class="autocomplete">
+                <input class="form-control" type="text" name="formInput" id="input"
+                    placeholder="4169191234 or apple:potato">
+            </div>
+        </form>
+        <div style="height: 1em;"></div>
+        <!-- <button class="btn btn-primary" id="submit">Convert</button> -->
+    </div>
+
+
+    <!-- spacer -->
+    <div style="height: 5em;"></div>
+    <div id="error" class="center alert alert-danger" role="alert"></div>
+
+    <div class="input_repeat" id="entered">
+        <h2 id="show_input"></h1>
+    </div>
+
+    <!-- This will be if the result is words, like Apple:Banana -->
+    <div class="numbers_result" id="numbers_result">
+
+        <div class="ph_info">
+            <div class="ph_item">
+                <span> <strong>Phone Number:</strong></span>
+                <p id="phone_number">3361234567</p>
+            </div>
+
+            <div class="ph_item">
+                <span> <strong>Valid?</strong></span>
+                <p id="phone_isValid">Yes</p>
+            </div>
+
+            <div class="ph_item">
+                <span> <strong>Phone Carrier</strong></span>
+                <p id="phone_carrier">T-Mobile</p>
+            </div>
+
+            <div class="ph_item">
+                <span> <strong>Number Type</strong></span>
+                <p id="line_type">Mobile</p>
+            </div>
+
+            <div class="number_options">
+                <div><button class="btn btn-info">Add to Contacts</button></div>
+                <div><button class="btn btn-success">Call</button></div>
+                <div><button class="btn btn-primary">Copy</button></div>
+            </div>
+
+        </div>
+        <div class="map">
+            <p id="location"></p>
+            <p id="carrier"></p>
+            <iframe id="map" src="https://maps.google.com/maps?q=toronto&t=&z=10&ie=UTF8&iwloc=&output=embed"></iframe>
+            <!--        https://maps.google.com/maps?q=toronto&t=&z=10&ie=UTF8&iwloc=&output=embed-->
+        </div>
+
+    </div>
+
+    <!-- This will be if the result is a phone number, like 4169191234 -->
+
+    <div class="words_result" id="words_result">
+        <h4>Your Dialy is:</h4>
+        <h1 id="dialy">apple:banana</h1>
+
+        <button class="btn btn-info">Copy</button>
+        <br>
+        <p id="total_conversions"></p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p class="credit">Made by <a href="https://cra1g.ca/currentprojects.html">Cra1g</a> & <a
+                    href="https://shmkane.com/">shmkane</a> &copy;Dialy 2020
+            </p>
+        </div>
+    </footer>
+
+
+    <!-- spacer -->
+    <div style="height: 30em;"></div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"
+        integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J"
+        crossorigin="anonymous"></script>
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-app.js"></script>
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-database.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

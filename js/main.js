@@ -12,6 +12,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 
+
 // Begin by hiding everything
 hideAll();
 
@@ -37,12 +38,17 @@ async function getResult() {
 
     if (user_in.match(phoneformat)) {
         document.getElementById("error").style.display = 'none';
+
         getWords();
 
         //If the user input a dialy
     } else if (user_in.toLowerCase().match(wordformat)) {
         document.getElementById("error").style.display = 'none';
-        you_entered.innerHTML = "You Entered: <strong>" + user_in.toString() + "</strong>";
+
+        you_entered.innerHTML = "<span class=\"text-white weight-900\">You entered:</span> <strong>" + user_in.toString() + "</strong>";
+        console.log('beep');
+        you_entered.classList.add("text-white-50");
+        you_entered.classList.add("weight-900");
         getPhone();
 
     } else {//user input something that didnt match the format.
@@ -72,7 +78,10 @@ async function getWords() {
     first_num = phone.slice(0, 5);
     second_num = phone.slice(5);
     //
-    you_entered.innerHTML = "You Entered: <strong>" + splitAndFormatPhoneNumber(phone) + "</strong>"
+    you_entered.classList.add("text-white-50");
+    you_entered.classList.add("weight-900");
+
+    you_entered.innerHTML = "<span class=\"text-white\">You entered:</span> <strong>" + splitAndFormatPhoneNumber(phone) + "</strong>"
     total_conversions.innerHTML = "This has been converted <strong>" + "TODO:Add here" + "</strong> times."
     //total_conversions
 
@@ -92,7 +101,17 @@ async function getWords() {
         });
 
         document.getElementById("dialy").innerHTML = resultword1 + ":" + resultword2;
-    })
+        document.getElementById("active").id = 'inactive'
+        document.getElementById("results").id = 'active'
+
+    }).then(
+        function () {
+            console.log(document.querySelector('#map'));
+            document.querySelector('#show_input').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    )
 }
 
 /**
@@ -101,6 +120,9 @@ async function getWords() {
 async function getPhone() {
     hideAll();//Start with everything hidden again.
     document.getElementById("entered").style.display = 'initial';
+    // Scroll to a certain element
+
+
 
     var words = document.getElementById("input").value;
     var word1 = words.split(":")[0].toLowerCase();
@@ -145,6 +167,8 @@ async function getPhone() {
                     //https://maps.google.com/maps?q=chicago&t=&z=13&ie=UTF8&iwloc=&output=embed
                     document.getElementById('phone_number').innerHTML = "(" + result.slice(0, 3) + ") " + result.slice(3, 6) + "-" + result.slice(6, 10);
 
+                    document.getElementById("active").id = 'inactive'
+                    document.getElementById("results").id = 'active'
 
                     var mapLoc = data.location + "+" + data.country_name;
                     console.log(mapLoc);
@@ -170,7 +194,14 @@ async function getPhone() {
 
         }
 
-    })
+    }).then(
+        function () {
+            console.log(document.querySelector('#map'));
+            document.querySelector('#show_input').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    )
 }
 
 // Hides all the elements of results
@@ -348,4 +379,40 @@ function autocomplete(inp) {
 
 //add a click event to the submit button
 // document.getElementById("submit").addEventListener("click", getResult); // Submit Button click event
-autocomplete(document.getElementById("input"))
+autocomplete(document.getElementById("input"));
+
+// Wrap every letter in a span
+var dialyTitle = document.querySelector('.ml1 .letters');
+var footerText = document.querySelector('.ml6 .letters');
+
+dialyTitle.innerHTML = dialyTitle.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+footerText.innerHTML = footerText.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({ loop: false })
+    .add({
+        targets: '.ml1 .letter',
+        scale: [0.3, 1],
+        opacity: [0, 1],
+        translateZ: 0,
+        easing: "easeOutExpo",
+        duration: 600,
+        delay: (el, i) => 70 * (i + 1)
+    }).add({
+        targets: '.ml1 .line',
+        scaleX: [0, 1],
+        opacity: [0.5, 1],
+        easing: "easeOutExpo",
+        duration: 700,
+        offset: '-=875',
+        delay: (el, i, l) => 80 * (l - i)
+    });
+
+
+anime.timeline({ loop: false })
+    .add({
+        targets: '.ml6 .letter',
+        translateY: ["1.1em", 0],
+        translateZ: 0,
+        duration: 1000,
+        delay: (el, i) => 50 * i
+    });

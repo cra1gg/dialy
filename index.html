@@ -58,7 +58,7 @@
                 </h1>
             </div>
         </div>
-        <p>Enter <span style="color: #b461b4;">Phone Number</span> or a <span style="color: #00ccff">Dialy</span></p>
+        <p id="how_to">Enter <span style="color: #b461b4;">Phone Number</span> or a <span style="color: #00ccff">Dialy</span></p>
     </div>
 
     <!-- This section will be the form -->
@@ -110,7 +110,7 @@
             <div class="number_options">
                 <div><button class="btn btn-info">Add to Contacts</button></div>
                 <div><button class="btn btn-success">Call</button></div>
-                <div><button class="btn btn-primary" onclick="copyClipboard()">Copy</button></div>
+                <div><button class="btn btn-primary">Copy</button></div>
             </div>
 
         </div>
@@ -129,7 +129,7 @@
         <h4>Your Dialy is:</h4>
         <h1 id="dialy" class="weight-900 text-white">Loading...</h1>
 
-        <button class="btn btn-info">Copy</button>
+        <button class="btn btn-info" onclick="copyClipboard('dialy')">Copy</button>
         <br>
         <p id="total_conversions"></p>
     </div>

@@ -81,6 +81,11 @@ a:active {
 }
 
 .autocomplete-items div {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 45%;
     text-align: center;
     padding: 5px;
     cursor: pointer;

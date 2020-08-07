@@ -46,7 +46,7 @@ async function getResult() {
         document.getElementById("error").style.display = 'none';
 
         you_entered.innerHTML = "<span class=\"text-white weight-900\">You entered:</span> <strong>" + user_in.toString() + "</strong>";
-        console.log('beep');
+
         you_entered.classList.add("text-white-50");
         you_entered.classList.add("weight-900");
         getPhone();
@@ -106,8 +106,7 @@ async function getWords() {
 
     }).then(
         function () {
-            console.log(document.querySelector('#map'));
-            document.querySelector('#show_input').scrollIntoView({
+            document.querySelector('#how_to').scrollIntoView({
                 behavior: 'smooth'
             });
         }
@@ -156,7 +155,6 @@ async function getPhone() {
             fetch('http://apilayer.net/api/validate?format=1&number=1' + result + '&access_key=a81a028c96fe1f4a4b906b22ae479cea')
                 .then((resp) => resp.json())
                 .then(function (data) {
-                    console.log(data)
                     // var formatted = "Valid" + data.valid + "Number" + data.number + "\n\Local Format"
                     //     + data.local_format + "\n\International Format" + data.international_format
                     //     + "\n\Country Prefix" + data.country_prefix + "\n\Country Code" + data.country_code
@@ -171,7 +169,6 @@ async function getPhone() {
                     document.getElementById("results").id = 'active'
 
                     var mapLoc = data.location + "+" + data.country_name;
-                    console.log(mapLoc);
 
                     document.getElementById('map').src = "https://maps.google.com/maps?q=" + mapLoc + "&t=&z=10&ie=UTF8&iwloc=&output=embed";
                     document.getElementById('line_type').innerHTML = data.line_type;
@@ -196,8 +193,7 @@ async function getPhone() {
 
     }).then(
         function () {
-            console.log(document.querySelector('#map'));
-            document.querySelector('#show_input').scrollIntoView({
+            document.querySelector('#how_to').scrollIntoView({
                 behavior: 'smooth'
             });
         }
@@ -375,6 +371,47 @@ function autocomplete(inp) {
     document.addEventListener("click", function (e) {
         closeAllLists(e.target);
     });
+}
+
+function copyClipboard(text){
+    var id = "mycustom-clipboard-textarea-hidden-id";
+    var existsTextarea = document.getElementById(id);
+
+    if(!existsTextarea){
+        var textarea = document.createElement("textarea");
+        textarea.id = id;
+        // Place in top-left corner of screen regardless of scroll position.
+        textarea.style.position = 'fixed';
+        textarea.style.top = 0;
+        textarea.style.left = 0;
+
+        // Ensure it has a small width and height. Setting to 1px / 1em
+        // doesn't work as this gives a negative w/h on some browsers.
+        textarea.style.width = '1px';
+        textarea.style.height = '1px';
+
+        // We don't need padding, reducing the size if it does flash render.
+        textarea.style.padding = 0;
+
+        // Clean up any borders.
+        textarea.style.border = 'none';
+        textarea.style.outline = 'none';
+        textarea.style.boxShadow = 'none';
+
+        // Avoid flash of white box if rendered for any reason.
+        textarea.style.background = 'transparent';
+        document.querySelector("body").appendChild(textarea);
+        existsTextarea = document.getElementById(id);
+    }
+
+    existsTextarea.value = document.querySelector('#' + text).textContent;
+    existsTextarea.select();
+
+    try {
+        var status = document.execCommand('copy');
+    } catch (err) {
+        console.log('Unable to copy.');
+    }
 }
 
 //add a click event to the submit button

@@ -217,6 +217,7 @@ async function getAutocomplete() {
     var phoneformat = /^\d{10}$/;
     var wordformat = /^[A-z]+:[A-z]*$/;
     var arr = [];
+
     //Shift if statement to other autocomplete function
     if (document.getElementById("input").value.match(phoneformat)) {
         document.getElementById("error").style.display = 'none';
@@ -245,6 +246,7 @@ async function getAutocomplete() {
 
     //console.log(ref.child('phonemappings/word').startAt(queryString).endAt(queryString + '\uf8ff').limit(5));
 }
+
 // Code related to auto complete
 function autocomplete(inp) {
     /*the autocomplete function takes two arguments,
@@ -256,6 +258,9 @@ function autocomplete(inp) {
         var wordformat = /^[A-z]+:[A-z]*$/;
         var two_words = false;
         getAutocomplete().then((value2) => {
+            if(value2 == undefined) {
+                return;
+            }
             if (document.getElementById("input").value.match(wordformat)) {
                 value2.forEach(function (data) {
                     arr.push(first_word + data.child("word").val())
@@ -267,6 +272,8 @@ function autocomplete(inp) {
                     arr.push(data.child("word").val())
                 });
             }
+
+
             arr.sort(function (a, b) {
                 // ASC  -> a.length - b.length
                 // DESC -> b.length - a.length

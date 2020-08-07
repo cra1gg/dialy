@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <meta name="description"
-          content="Dialy converts your phone number into easy to remember 2 words. Then, convert back into numbers!">
+        content="Dialy converts your phone number into easy to remember 2 words. Then, convert back into numbers!">
     <meta name="author" content="Co-authored by Craig (cra1gg), Soham (shmkane)">
 
-    <link rel="icon" href="assets/favicon.ico">
+    <link rel="icon" href="assets/favicon.ico?">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
@@ -29,10 +29,10 @@
     <div class="mynav">
         <ul class="">
             <li class="">
-                <a class="" href="index.html">Home</a>
+                <a id="active" class="" href="index.html">Home</a>
             </li>
             <li class="">
-                <a class="" href="#numbers_result">Results</a>
+                <a id="results" class="" href="#numbers_result">Results</a>
             </li>
             <li class="">
                 <a class="" href="about.html">About</a>
@@ -40,12 +40,25 @@
         </ul>
     </div>
 
-    <!-- spacer -->
-    <div style="height: 4em;"></div>
+
 
     <!-- This will be the top of the page right before the form -->
-    <div class="intro">
-        <p>Enter phone number or a Dialy</p>
+    <div class="intro text-white">
+        <!-- spacer -->
+        <div style="height: 7em;"></div>
+
+        <div class="position-relative text-center">
+            <div class="mx-auto my-5">
+                <h1 class="ml1">
+                    <span class="text-wrapper">
+                        <span class="line line1"></span>
+                        <span class="letters">DIALY</span>
+                        <span class="line line2"></span>
+                    </span>
+                </h1>
+            </div>
+        </div>
+        <p>Enter <span style="color: #b461b4;">Phone Number</span> or a <span style="color: #00ccff">Dialy</span></p>
     </div>
 
     <!-- This section will be the form -->
@@ -71,33 +84,33 @@
 
 
     <!-- This will be if the result is words, like Apple:Banana -->
-    <div class="numbers_result" id="numbers_result">
+    <div class="numbers_result text-white" id="numbers_result">
 
         <div class="ph_info">
             <div class="ph_item">
                 <span> <strong>Phone Number:</strong></span>
-                <p id="phone_number">3361234567</p>
+                <p id="phone_number" class="text-white-50">Loading...</p>
             </div>
 
             <div class="ph_item">
                 <span> <strong>Valid?</strong></span>
-                <p id="phone_isValid">Yes</p>
+                <p id="phone_isValid" class="text-white-50">Loading...</p>
             </div>
 
             <div class="ph_item">
                 <span> <strong>Phone Carrier</strong></span>
-                <p id="phone_carrier">T-Mobile</p>
+                <p id="phone_carrier" class="text-white-50">Loading...</p>
             </div>
 
             <div class="ph_item">
                 <span> <strong>Number Type</strong></span>
-                <p id="line_type">Mobile</p>
+                <p id="line_type" class="text-white-50">Loading...</p>
             </div>
 
             <div class="number_options">
                 <div><button class="btn btn-info">Add to Contacts</button></div>
                 <div><button class="btn btn-success">Call</button></div>
-                <div><button class="btn btn-primary">Copy</button></div>
+                <div><button class="btn btn-primary" onclick="copyClipboard()">Copy</button></div>
             </div>
 
         </div>
@@ -112,9 +125,9 @@
 
     <!-- This will be if the result is a phone number, like 4169191234 -->
 
-    <div class="words_result" id="words_result">
+    <div class="words_result text-white-50" id="words_result">
         <h4>Your Dialy is:</h4>
-        <h1 id="dialy">apple:banana</h1>
+        <h1 id="dialy" class="weight-900 text-white">Loading...</h1>
 
         <button class="btn btn-info">Copy</button>
         <br>
@@ -122,12 +135,21 @@
     </div>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer text-white-50">
         <div class="container text-center">
-            <p class="credit">Made by <a href="https://cra1g.ca/currentprojects.html">Cra1g</a> & <a
-                    href="https://shmkane.com/">shmkane</a> &copy;Dialy 2020
-            </p>
+
         </div>
+
+        <div class="ml6">
+            <span class="text-wrapper">
+                <span class="letters">
+                    <p class="credit">Made by <a href="https://cra1g.ca/currentprojects.html">Cra1g</a> & <a
+                            href="https://shmkane.com/">shmkane</a> 
+                    </p>
+                </span>
+            </span>
+        </div>
+        <p>&copy;Dialy 2020</p>
     </footer>
 
 
@@ -150,7 +172,10 @@
     <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
     <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-database.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
     <script src="js/main.js"></script>
+
 </body>
 
 </html>

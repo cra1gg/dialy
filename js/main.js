@@ -58,6 +58,20 @@ async function getResult() {
     }
 }
 
+async function logtoDb(phonenum, dialy){
+    var postData = {
+        phone_num: phonenum,
+        dialy: dialy,
+        num_times: 1
+    };
+    var ref = database.ref().child('searchhistory');
+    var newPushKey = ref.push().key;
+    var curr = {};
+    curr['/'+ newPushKey] = postData;
+    ref.update(curr);
+    console.log("pushed")
+}
+
 /**
  * User input a phone number, now we want to print out a Dialy
  */
@@ -103,6 +117,7 @@ async function getWords() {
         document.getElementById("dialy").innerHTML = resultword1 + ":" + resultword2;
         document.getElementById("active").id = 'inactive'
         document.getElementById("results").id = 'active'
+        logtoDb(phone, document.getElementById("dialy").innerHTML)
 
     }).then(
         function () {
@@ -167,7 +182,7 @@ async function getPhone() {
 
                     document.getElementById("active").id = 'inactive'
                     document.getElementById("results").id = 'active'
-
+                    logtoDb(result, document.getElementById("input").value)
                     var mapLoc = data.location + "+" + data.country_name;
 
                     document.getElementById('map').src = "https://maps.google.com/maps?q=" + mapLoc + "&t=&z=10&ie=UTF8&iwloc=&output=embed";

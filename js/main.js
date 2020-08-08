@@ -131,7 +131,7 @@ async function getWords() {
     var ref = database.ref();
     var word1 = ref.child('mappings').orderByChild('number').equalTo(first_num).once("value")
     var word2 = ref.child('mappings').orderByChild('number').equalTo(second_num).once("value")
-
+    logtoDb(phone, document.getElementById("dialy").innerHTML)
     Promise.all([word1, word2]).then((values) => {
         var resultword1;
         var resultword2;
@@ -145,7 +145,7 @@ async function getWords() {
         document.getElementById("dialy").innerHTML = resultword1 + ":" + resultword2;
         document.getElementById("active").id = 'inactive'
         document.getElementById("results").id = 'active'
-        logtoDb(phone, document.getElementById("dialy").innerHTML)
+        
 
     }).then(
         function () {
@@ -189,7 +189,7 @@ async function getPhone() {
 
         var result = resultnum1 + resultnum2;
         document.getElementById("numbers_result").style.display = 'grid';
-
+        logtoDb(result, document.getElementById("input").value)
         if (isNaN(result)) {
             hideAll();
             document.getElementById('error').innerHTML = "Invalid Dialy. Check the input and try again.";
@@ -210,7 +210,7 @@ async function getPhone() {
 
                     document.getElementById("active").id = 'inactive'
                     document.getElementById("results").id = 'active'
-                    logtoDb(result, document.getElementById("input").value)
+                    
                     var mapLoc = data.location + "+" + data.country_name;
 
                     document.getElementById('map').src = "https://maps.google.com/maps?q=" + mapLoc + "&t=&z=10&ie=UTF8&iwloc=&output=embed";

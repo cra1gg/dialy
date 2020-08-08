@@ -59,17 +59,45 @@ async function getResult() {
 }
 
 async function logtoDb(phonenum, dialy){
-    var postData = {
-        phone_num: phonenum,
-        dialy: dialy,
-        num_times: 1
-    };
     var ref = database.ref().child('searchhistory');
-    var newPushKey = ref.push().key;
-    var curr = {};
-    curr['/'+ newPushKey] = postData;
-    ref.update(curr);
-    console.log("pushed")
+    var keyToUse;
+    var exists = false;
+    var previous_count = 0;
+    var phone_check = ref.orderByChild('phone_num').equalTo(phonenum).once("value");
+    phone_check.then((value) => {
+        value.forEach(function (data) {
+            exists = true
+            previous_count = data.child("num_times").val();
+            keyToUse = data.key;
+            console.log("Already exists, key is")
+            console.log(data.key)
+        })
+        if (exists == true) {
+            var postData = {
+                phone_num: phonenum,
+                dialy: dialy,
+                num_times: previous_count + 1
+            };
+            var curr = {};
+            curr['/'+ keyToUse] = postData;
+            ref.update(curr);
+        }
+        else {
+            var postData = {
+                phone_num: phonenum,
+                dialy: dialy,
+                num_times: 1
+            };
+            var newPushKey = ref.push().key;
+            var curr = {};
+            curr['/'+ newPushKey] = postData;
+            ref.update(curr);
+        }
+        total_conversions.innerHTML = "This has been converted <strong>" + (previous_count + 1) + "</strong> times." 
+    });
+    
+    
+    
 }
 
 /**
@@ -96,7 +124,7 @@ async function getWords() {
     you_entered.classList.add("weight-900");
 
     you_entered.innerHTML = "<span class=\"text-white\">You entered:</span> <strong>" + splitAndFormatPhoneNumber(phone) + "</strong>"
-    total_conversions.innerHTML = "This has been converted <strong>" + "TODO:Add here" + "</strong> times."
+    //total_conversions.innerHTML = "This has been converted <strong>" + "TODO:Add here" + "</strong> times."
     //total_conversions
 
 

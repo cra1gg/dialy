@@ -58,6 +58,48 @@ async function getResult() {
     }
 }
 
+async function logtoDb(phonenum, dialy){
+    var ref = database.ref().child('searchhistory');
+    var keyToUse;
+    var exists = false;
+    var previous_count = 0;
+    var phone_check = ref.orderByChild('phone_num').equalTo(phonenum).once("value");
+    phone_check.then((value) => {
+        value.forEach(function (data) {
+            exists = true
+            previous_count = data.child("num_times").val();
+            keyToUse = data.key;
+            console.log("Already exists, key is")
+            console.log(data.key)
+        })
+        if (exists == true) {
+            var postData = {
+                phone_num: phonenum,
+                dialy: dialy,
+                num_times: previous_count + 1
+            };
+            var curr = {};
+            curr['/'+ keyToUse] = postData;
+            ref.update(curr);
+        }
+        else {
+            var postData = {
+                phone_num: phonenum,
+                dialy: dialy,
+                num_times: 1
+            };
+            var newPushKey = ref.push().key;
+            var curr = {};
+            curr['/'+ newPushKey] = postData;
+            ref.update(curr);
+        }
+        total_conversions.innerHTML = "This has been converted <strong>" + (previous_count + 1) + "</strong> times." 
+    });
+    
+    
+    
+}
+
 /**
  * User input a phone number, now we want to print out a Dialy
  */
@@ -82,14 +124,14 @@ async function getWords() {
     you_entered.classList.add("weight-900");
 
     you_entered.innerHTML = "<span class=\"text-white\">You entered:</span> <strong>" + splitAndFormatPhoneNumber(phone) + "</strong>"
-    total_conversions.innerHTML = "This has been converted <strong>" + "TODO:Add here" + "</strong> times."
+    //total_conversions.innerHTML = "This has been converted <strong>" + "TODO:Add here" + "</strong> times."
     //total_conversions
 
 
     var ref = database.ref();
     var word1 = ref.child('mappings').orderByChild('number').equalTo(first_num).once("value")
     var word2 = ref.child('mappings').orderByChild('number').equalTo(second_num).once("value")
-
+    logtoDb(phone, document.getElementById("dialy").innerHTML)
     Promise.all([word1, word2]).then((values) => {
         var resultword1;
         var resultword2;
@@ -103,6 +145,7 @@ async function getWords() {
         document.getElementById("dialy").innerHTML = resultword1 + ":" + resultword2;
         document.getElementById("active").id = 'inactive'
         document.getElementById("results").id = 'active'
+        
 
     }).then(
         function () {
@@ -146,7 +189,7 @@ async function getPhone() {
 
         var result = resultnum1 + resultnum2;
         document.getElementById("numbers_result").style.display = 'grid';
-
+        logtoDb(result, document.getElementById("input").value)
         if (isNaN(result)) {
             hideAll();
             document.getElementById('error').innerHTML = "Invalid Dialy. Check the input and try again.";
@@ -167,7 +210,7 @@ async function getPhone() {
 
                     document.getElementById("active").id = 'inactive'
                     document.getElementById("results").id = 'active'
-
+                    
                     var mapLoc = data.location + "+" + data.country_name;
 
                     document.getElementById('map').src = "https://maps.google.com/maps?q=" + mapLoc + "&t=&z=10&ie=UTF8&iwloc=&output=embed";

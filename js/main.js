@@ -14,6 +14,7 @@ var database = firebase.database();
 
 
 // Begin by hiding everything
+
 hideAll();
 
 
@@ -58,6 +59,48 @@ async function getResult() {
     }
 }
 
+async function logtoDb(phonenum, dialy){
+    var ref = database.ref().child('searchhistory');
+    var keyToUse;
+    var exists = false;
+    var previous_count = 0;
+    var phone_check = ref.orderByChild('phone_num').equalTo(phonenum).once("value");
+    phone_check.then((value) => {
+        value.forEach(function (data) {
+            exists = true
+            previous_count = data.child("num_times").val();
+            keyToUse = data.key;
+            console.log("Already exists, key is")
+            console.log(data.key)
+        })
+        if (exists == true) {
+            var postData = {
+                phone_num: phonenum,
+                dialy: dialy,
+                num_times: previous_count + 1
+            };
+            var curr = {};
+            curr['/'+ keyToUse] = postData;
+            ref.update(curr);
+        }
+        else {
+            var postData = {
+                phone_num: phonenum,
+                dialy: dialy,
+                num_times: 1
+            };
+            var newPushKey = ref.push().key;
+            var curr = {};
+            curr['/'+ newPushKey] = postData;
+            ref.update(curr);
+        }
+        total_conversions.innerHTML = "This has been converted <strong>" + (previous_count + 1) + "</strong> times." 
+    });
+    
+    
+    
+}
+
 /**
  * User input a phone number, now we want to print out a Dialy
  */
@@ -72,23 +115,7 @@ async function getWords() {
     var you_entered = document.getElementById("show_input");
 
     //Slice the number to format
-    var ref = database.ref();
-    var phoneformat = /^\d{10}$/;
-    var wordformat = /^[A-z]+:[A-z]*$/;
-    var phoneformat2 = /^\(\d{3}\)\s\d{3}-\d{4}/
-    var arr = [];
-    var phone;
-    //Shift if statement to other autocomplete function
-    if (document.getElementById("input").value.match(phoneformat)){
-        phone = document.getElementById("input").value;
-    }
-    else if (document.getElementById("input").value.match(phoneformat2)) {
-        phone = document.getElementById("input").value.replace("(", "").replace(")", "").replace("-", "").replace(" ", "");
-    }
-
-
-
-    
+    var phone = document.getElementById("input").value;
     var total_conversions = document.getElementById("total_conversions");
 
     first_num = phone.slice(0, 5);
@@ -98,14 +125,14 @@ async function getWords() {
     you_entered.classList.add("weight-900");
 
     you_entered.innerHTML = "<span class=\"text-white\">You entered:</span> <strong>" + splitAndFormatPhoneNumber(phone) + "</strong>"
-    total_conversions.innerHTML = "This has been converted <strong>" + "TODO:Add here" + "</strong> times."
+    //total_conversions.innerHTML = "This has been converted <strong>" + "TODO:Add here" + "</strong> times."
     //total_conversions
 
 
     var ref = database.ref();
     var word1 = ref.child('mappings').orderByChild('number').equalTo(first_num).once("value")
     var word2 = ref.child('mappings').orderByChild('number').equalTo(second_num).once("value")
-
+    logtoDb(phone, document.getElementById("dialy").innerHTML)
     Promise.all([word1, word2]).then((values) => {
         var resultword1;
         var resultword2;
@@ -119,6 +146,7 @@ async function getWords() {
         document.getElementById("dialy").innerHTML = resultword1 + ":" + resultword2;
         document.getElementById("active").id = 'inactive'
         document.getElementById("results").id = 'active'
+        
 
     }).then(
         function () {
@@ -162,13 +190,13 @@ async function getPhone() {
 
         var result = resultnum1 + resultnum2;
         document.getElementById("numbers_result").style.display = 'grid';
-
+        logtoDb(result, document.getElementById("input").value)
         if (isNaN(result)) {
             hideAll();
             document.getElementById('error').innerHTML = "Invalid Dialy. Check the input and try again.";
             document.getElementById("error").style.display = 'block';
         } else {
-            fetch('https://api.dialy.xyz/lookup/+1' + result)
+            fetch('http://apilayer.net/api/validate?format=1&number=1' + result + '&access_key=a81a028c96fe1f4a4b906b22ae479cea')
                 .then((resp) => resp.json())
                 .then(function (data) {
                     // var formatted = "Valid" + data.valid + "Number" + data.number + "\n\Local Format"
@@ -183,7 +211,7 @@ async function getPhone() {
 
                     document.getElementById("active").id = 'inactive'
                     document.getElementById("results").id = 'active'
-
+                    
                     var mapLoc = data.location + "+" + data.country_name;
 
                     document.getElementById('map').src = "https://maps.google.com/maps?q=" + mapLoc + "&t=&z=10&ie=UTF8&iwloc=&output=embed";
@@ -225,23 +253,22 @@ function hideAll() {
 }
 
 function splitAndFormatPhoneNumber(phone) {
-    return "(" + phone.slice(0, 3) + ")" + " " + phone.slice(3, 6) + "-" + phone.slice(6, 10);
+    return "(" + phone.slice(0, 3) + ")" + " " + phone.slice(3, 6) + " " + phone.slice(6, 10);
 }
 
 async function getAutocomplete() {
     var ref = database.ref();
     var phoneformat = /^\d{10}$/;
     var wordformat = /^[A-z]+:[A-z]*$/;
-    var phoneformat2 = /^\(\d{3}\)\s\d{3}-\d{4}/
     var arr = [];
 
     //Shift if statement to other autocomplete function
-    if (document.getElementById("input").value.match(phoneformat) || document.getElementById("input").value.match(phoneformat2)) {
+    if (document.getElementById("input").value.match(phoneformat)) {
         document.getElementById("error").style.display = 'none';
         getWords();
     }
     else if (document.getElementById("input").value.match(wordformat)) {
-        words = document.getElementById("input").value.toLowerCase();
+        words = document.getElementById("input").value;
         first_word = words.split(":")[0] + ":";
         if (words.split(":").length < 2) {
             queryString = "a";
@@ -256,7 +283,7 @@ async function getAutocomplete() {
     }
     else {
         //var phone1 = ref.child('phonemappings').orderByChild('word').equalTo(word1).once("value")
-        queryString = document.getElementById("input").value.toLowerCase();
+        queryString = document.getElementById("input").value;
         var promise1 = ref.child('phonemappings').orderByChild('word').startAt(queryString).endAt(queryString + '\uf8ff').limitToFirst(4).once("value")
         return promise1;
     }

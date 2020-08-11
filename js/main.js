@@ -86,9 +86,7 @@ async function getWords() {
         phone = document.getElementById("input").value.replace("(", "").replace(")", "").replace("-", "").replace(" ", "");
     }
 
-
-
-    
+    var phone = document.getElementById("input").value;
     var total_conversions = document.getElementById("total_conversions");
 
     first_num = phone.slice(0, 5);
@@ -162,7 +160,7 @@ async function getPhone() {
 
         var result = resultnum1 + resultnum2;
         document.getElementById("numbers_result").style.display = 'grid';
-
+        logtoDb(result, document.getElementById("input").innerHTML)
         if (isNaN(result)) {
             hideAll();
             document.getElementById('error').innerHTML = "Invalid Dialy. Check the input and try again.";
@@ -231,7 +229,7 @@ function splitAndFormatPhoneNumber(phone) {
 async function getAutocomplete() {
     var ref = database.ref();
     var phoneformat = /^\d{10}$/;
-    var wordformat = /^[A-z]+:[A-z]*$/;
+    var wordformat = /^[A-z]+:[A-z]*$/
     var phoneformat2 = /^\(\d{3}\)\s\d{3}-\d{4}/
     var arr = [];
 
@@ -246,16 +244,8 @@ async function getAutocomplete() {
         if (words.split(":").length < 2) {
             queryString = "a";
         }
-        else {
-            queryString = words.split(":")[1];
-        }
-
-        var promise1 = ref.child('phonemappings').orderByChild('word').startAt(queryString).endAt(queryString + '\uf8ff').limitToFirst(4).once("value")
-        return promise1;
-
     }
     else {
-        //var phone1 = ref.child('phonemappings').orderByChild('word').equalTo(word1).once("value")
         queryString = document.getElementById("input").value.toLowerCase();
         var promise1 = ref.child('phonemappings').orderByChild('word').startAt(queryString).endAt(queryString + '\uf8ff').limitToFirst(4).once("value")
         return promise1;

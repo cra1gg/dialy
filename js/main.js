@@ -168,7 +168,7 @@ async function getPhone() {
             document.getElementById('error').innerHTML = "Invalid Dialy. Check the input and try again.";
             document.getElementById("error").style.display = 'block';
         } else {
-            fetch('http://api.dialy.xyz/lookup/+1' + result)
+            fetch('https://api.dialy.xyz/lookup/+1' + result)
                 .then((resp) => resp.json())
                 .then(function (data) {
                     // var formatted = "Valid" + data.valid + "Number" + data.number + "\n\Local Format"

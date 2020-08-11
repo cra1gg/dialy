@@ -14,6 +14,7 @@ var database = firebase.database();
 
 
 // Begin by hiding everything
+
 hideAll();
 
 

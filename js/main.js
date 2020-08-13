@@ -286,6 +286,11 @@ async function getAutocomplete() {
         if (words.split(":").length < 2) {
             queryString = "a";
         }
+        else {
+            queryString = words.split(":")[1];
+        }
+        var promise1 = ref.child('phonemappings').orderByChild('word').startAt(queryString).endAt(queryString + '\uf8ff').limitToFirst(4).once("value")
+        return promise1;
     }
     else {
         queryString = document.getElementById("input").value.toLowerCase();

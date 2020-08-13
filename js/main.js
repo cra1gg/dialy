@@ -281,7 +281,7 @@ async function getAutocomplete() {
         getWords();
     }
     else if (document.getElementById("input").value.match(wordformat)) {
-        words = document.getElementById("input").value;
+        words = document.getElementById("input").value.toLowerCase();
         first_word = words.split(":")[0] + ":";
         if (words.split(":").length < 2) {
             queryString = "a";

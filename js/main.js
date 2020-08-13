@@ -281,11 +281,16 @@ async function getAutocomplete() {
         getWords();
     }
     else if (document.getElementById("input").value.match(wordformat)) {
-        words = document.getElementById("input").value.toLowerCase();
+        words = document.getElementById("input").value;
         first_word = words.split(":")[0] + ":";
         if (words.split(":").length < 2) {
             queryString = "a";
         }
+        else {
+            queryString = words.split(":")[1];
+        }
+        var promise1 = ref.child('phonemappings').orderByChild('word').startAt(queryString).endAt(queryString + '\uf8ff').limitToFirst(4).once("value")
+        return promise1;
     }
     else {
         queryString = document.getElementById("input").value.toLowerCase();

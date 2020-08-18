@@ -94,6 +94,7 @@ async function logtoDb(phonenum, dialy){
             ref.update(curr);
         }
         total_conversions.innerHTML = "This has been converted <strong>" + (previous_count + 1) + "</strong> times." 
+        document.getElementById("total_conversions_word").innerHTML = "This has been converted <strong>" + (previous_count + 1) + "</strong> times." 
     });
     
     

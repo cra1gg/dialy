@@ -93,8 +93,8 @@ async function logtoDb(phonenum, dialy){
             curr['/'+ newPushKey] = postData;
             ref.update(curr);
         }
-        total_conversions.innerHTML = "This has been converted <strong>" + (previous_count + 1) + "</strong> times." 
-        document.getElementById("total_conversions_word").innerHTML = "This has been converted <strong>" + (previous_count + 1) + "</strong> times." 
+        total_conversions.innerHTML = "This Dialy has been converted <strong>" + (previous_count + 1) + "</strong> times." 
+        document.getElementById("total_conversions_word").innerHTML = "This has Dialy been converted <strong>" + (previous_count + 1) + "</strong> times." 
     });
     
     

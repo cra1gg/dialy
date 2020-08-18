@@ -94,6 +94,7 @@ async function logtoDb(phonenum, dialy){
             ref.update(curr);
         }
         total_conversions.innerHTML = "This has been converted <strong>" + (previous_count + 1) + "</strong> times." 
+        document.getElementById("total_conversions_word").innerHTML = "This has been converted <strong>" + (previous_count + 1) + "</strong> times." 
     });
     
     
@@ -127,20 +128,15 @@ async function getWords() {
     else if (document.getElementById("input").value.match(phoneformat2)) {
         phone = document.getElementById("input").value.replace("(", "").replace(")", "").replace("-", "").replace(" ", "");
     }
-
-    var phone = document.getElementById("input").value;
     var total_conversions = document.getElementById("total_conversions");
 
     first_num = phone.slice(0, 5);
     second_num = phone.slice(5);
-    //
+
     you_entered.classList.add("text-white-50");
     you_entered.classList.add("weight-900");
 
     you_entered.innerHTML = "<span class=\"text-white\">You entered:</span> <strong>" + splitAndFormatPhoneNumber(phone) + "</strong>"
-    //total_conversions.innerHTML = "This has been converted <strong>" + "TODO:Add here" + "</strong> times."
-    //total_conversions
-
     var ref = database.ref();
     var word1 = ref.child('mappings').orderByChild('number').equalTo(first_num).once("value")
     var word2 = ref.child('mappings').orderByChild('number').equalTo(second_num).once("value")

@@ -128,8 +128,6 @@ async function getWords() {
     else if (document.getElementById("input").value.match(phoneformat2)) {
         phone = document.getElementById("input").value.replace("(", "").replace(")", "").replace("-", "").replace(" ", "");
     }
-
-    var phone = document.getElementById("input").value;
     var total_conversions = document.getElementById("total_conversions");
 
     first_num = phone.slice(0, 5);

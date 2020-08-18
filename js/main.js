@@ -172,6 +172,7 @@ async function getPhone() {
     hideAll();//Start with everything hidden again.
     document.getElementById("entered").style.display = 'initial';
     // Scroll to a certain element
+    //document.getElementById("myDIV").style.display = "block"
 
 
 
@@ -217,23 +218,28 @@ async function getPhone() {
                     //https://maps.google.com/maps?q=chicago&t=&z=13&ie=UTF8&iwloc=&output=embed
                     document.getElementById('phone_number').innerHTML = "(" + result.slice(0, 3) + ") " + result.slice(3, 6) + "-" + result.slice(6, 10);
 
-                    document.getElementById("active").id = 'inactive'
+                    //document.getElementById("active").id = 'inactive'
                     document.getElementById("results").id = 'active'
 
-                    var mapLoc = data.location + "+" + data.country_name;
+                    var mapLoc = data.location; //+ "+" + data.country_name;
 
                     document.getElementById('map').src = "https://maps.google.com/maps?q=" + mapLoc + "&t=&z=10&ie=UTF8&iwloc=&output=embed";
                     document.getElementById('line_type').innerHTML = data.line_type;
-
-                    //Switch to ternary operator one day
-                    if (!(data.line_type === "landline")) {
-                        //Not landline, i.e. mobile
-                        document.getElementById('phone_carrier').innerHTML = data.carrier;
-                    } else {
-                        //If landline
-                        document.getElementById('phone_carrier').innerHTML = data.line_type;
-
+                    
+                    if (data.valid.toString() == 'true') {
+                        document.getElementById('phone_isValid').innerHTML = "Yes";
                     }
+                    else {
+                        document.getElementById('phone_isValid').innerHTML = "No"
+                    }
+                    //Switch to ternary operator one day
+                    if (data.carrier == "") {
+                        document.getElementById('phone_carrier').innerHTML = "N/A"
+                    }
+                    else {
+                        document.getElementById('phone_carrier').innerHTML = data.carrier
+                    }
+
 
                     //Add case for surpassing api call limit
                 })

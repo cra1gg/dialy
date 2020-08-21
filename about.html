@@ -59,17 +59,52 @@
     </div>
 
     <div>
-        <h2 class="text-white-50 text-center mx-auto weight-900">About Us</h2>
+        <h2 class="text-white-50 text-center mx-auto weight-900">What is Dialy?</h2>
 
         <!-- spacer -->
         <div style="height: 1em;"></div>
 
-        <h6 class="text-white text-center mx-auto container">Phone2Words's inspiration came from a project called <a
-                href="https://what3words.com/" style="color: rgb(251, 115, 206);" >What3Words</a>: a tool that can convert any location on Earth into 3
-            words.
-            <br>
-            <br>We strive to reach a similar goal -- mapping every 10-digit phone number to 2 words that are easy to
-            remember.</h6>
+        <h6 class="text-white text-center mx-auto container">Dialy is a radical new take on phone numbers. Instead of having to memorize a random sequence of ten digits, phone numbers are assigned Dialys; two short words that are easy to remember. Now, instead of having to memorize all these random numbers, all you have to remember is two simple words!
+
+        </h6>
+    </div>
+    <div style="height: 1em;"></div>
+    <div>
+        <h2 class="text-white-50 text-center mx-auto weight-900">Why does Dialy exist?</h2>
+
+        <!-- spacer -->
+        <div style="height: 1em;"></div>
+
+        <h6 class="text-white text-center mx-auto container">Dialy was heavily inspired by What3Words. The founders of Dialy were curious as to what in what other applications words could be used to reduce the difficulty of remembering things. Phone numbers were one of the first things that came to mind, they are hard to remember and can easily be replaced with two unique words.
+        </h6>
+    </div>
+    <div style="height: 1em;"></div>
+    <div>
+        <h2 class="text-white-50 text-center mx-auto weight-900">How does I use it?</h2>
+
+        <!-- spacer -->
+        <div style="height: 1em;"></div>
+
+        <h6 class="text-white text-center mx-auto container">Dialy's interface was designed to be as simple as possible. When users first load the site, they will be greeted with a search bar.</h6>
+        <h6 class="text-white text-center mx-auto container">In this search bar, you can enter either a Dialy (two words separated by a colon), or a phone number. Dialy takes advantage of Firebase's lightning fast indexing with its low latency autocomplete. If the Dialy exists in the database, users will be able to select it from the autocomplete dropdown</h6>
+        <h6 class="text-white text-center mx-auto container">The user will then be greeted with the original phone number assigned to the entered Dialy, as well as some accompanying metadata and search history</h6>
+        <h6 class="text-white text-center mx-auto container">Conversely, if a user enters a phone number, they will be shown the Dialy assigned to it</h6>
+        
+    </div>
+    <div style="height: 1em;"></div>
+    <div>
+        <h2 class="text-white-50 text-center mx-auto weight-900">How does it work?</h2>
+
+        <!-- spacer -->
+        <div style="height: 1em;"></div>
+
+        <h6 class="text-white text-center mx-auto container">Dialy works by splitting all phone numbers up into two groups of 5 digits. Because of this, Dialy only supports North American phone numbers at the moment. Significant changes to the codebase would need to be made to support numbers from other countries. Dialy assigns one word to each 5 digit number, so it uses a total of 10^5 (100,000) words and assigns two words to every possible ten digit number (even if they are not valid North American phone numbers)
+        </h6>
+        <h6 class="text-white text-center mx-auto container">Dialy was created using Vanilla JS and Bootstrap. Dialy uses Firebase for storage of phone/word assignments as well as the search history of each phone number. The website itself is also hosted on Firebase (Yay for free hosting!). Dialy uses its own api, repository here to get accompanying phone number metadata. It acheives this using Google's libphonenumber with a Python wrapper.
+        </h6>
+        <h6 class="text-white text-center mx-auto container">Dialy was developed over the Summer of 2020 by two amateur CS students. As a result, you're almost guaranteed to encounter bugs. If you do, feel free to open a detailed bug report
+        </h6>
+        
     </div>
 
 

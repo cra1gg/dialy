@@ -3,12 +3,12 @@
 # http://dialy.xyz
 
 # What is Dialy?
-Dialy is a radical new take on phone numbers. Instead of having to memorize a random sequence of ten digits, phone numbers are assigned Dialys; two short words that are easy to remember. Now, instead of having to memorize all these random numbers, all you have to remember is two simple words?
+Dialy is a radical new take on phone numbers. Instead of having to memorize a random sequence of ten digits, phone numbers are assigned Dialys; two short words that are easy to remember. Now, instead of having to memorize all these random numbers, all you have to remember is two simple words!
 
 # Why does Dialy exist?
 Dialy was heavily inspired by [What3Words](https://what3words.com/). The founders of Dialy were curious as to what in what other applications words could be used to reduce the difficulty of remembering things. Phone numbers were one of the first things that came to mind, they are hard to remember and can easily be replaced with two unique words.
 
-# How does it work?
+# How do I use it?
 Dialy's interface was designed to be as simple as possible. When users first load the site, they will be greeted with a search bar. 
 
 ![Dialy Home Page](https://i.imgur.com/oQAb2J8.png)

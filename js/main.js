@@ -145,6 +145,11 @@ async function getWords() {
     Promise.all([word1, word2]).then((values) => {
         var resultword1;
         var resultword2;
+
+        document.querySelector('#how_to').scrollIntoView({
+            behavior: 'smooth'
+        });
+
         values[0].forEach(function (data) {
             resultword1 = data.child("word").val().toLowerCase();
         });
@@ -156,13 +161,7 @@ async function getWords() {
         document.getElementById("active").id = 'inactive'
         document.getElementById("results").id = 'active'
 
-    }).then(
-        function () {
-            document.querySelector('#how_to').scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
-    )
+    })
 }
 
 /**
@@ -208,6 +207,10 @@ async function getPhone() {
             fetch('https://api.dialy.xyz/lookup/+1' + result)
                 .then((resp) => resp.json())
                 .then(function (data) {
+
+                    document.querySelector('#how_to').scrollIntoView({
+                        behavior: 'smooth'
+                    });
                     // var formatted = "Valid" + data.valid + "Number" + data.number + "\n\Local Format"
                     //     + data.local_format + "\n\International Format" + data.international_format
                     //     + "\n\Country Prefix" + data.country_prefix + "\n\Country Code" + data.country_code
@@ -249,13 +252,7 @@ async function getPhone() {
 
         }
 
-    }).then(
-        function () {
-            document.querySelector('#how_to').scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
-    )
+    })
 }
 
 // Hides all the elements of results

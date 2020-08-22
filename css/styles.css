@@ -243,3 +243,7 @@ a:active {
     display: inline-block;
     line-height: 1em;
   }
+
+  .card {
+      color: black;
+  }

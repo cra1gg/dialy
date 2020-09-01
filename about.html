@@ -6,25 +6,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <meta name="description"
-        content="Dialy converts your phone number into easy to remember 2 words. Then, convert back into numbers!">
+    <meta name="description" content="Dialy converts your phone number into easy to remember 2 words. Then, convert back into numbers!">
     <meta name="author" content="Co-authored by Craig (cra1gg), Soham (shmkane)">
 
     <link rel="icon" href="assets/favicon.ico">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
-        integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
     <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
     <link rel="stylesheet" href="css/styles.css">
 
 
     <title>Dialy | Click, Convert, Call</title>
 </head>
 
-<body>
+<body class="">
     <!-- This is the small navbar -->
     <div class="mynav">
         <ul class="">
@@ -41,43 +37,137 @@
     </div>
 
     <!-- This will be the top of the page right before the form -->
-    <div class="intro text-white-50">
+    <div class="intro text-white">
         <!-- spacer -->
-        <div style="height: 7em;"></div>
-
         <div class="position-relative text-center">
             <div class="mx-auto my-5">
                 <h1 class="ml1">
                     <span class="text-wrapper">
                         <span class="line line1"></span>
-                        <span class="letters">DIALY</span>
-                        <span class="line line2"></span>
+                    <span class="letters">DIALY</span>
+                    <span class="line line2"></span>
                     </span>
                 </h1>
             </div>
         </div>
     </div>
 
-    <div>
-        <h2 class="text-white-50 text-center mx-auto weight-900">About Us</h2>
+    <!-- begin accordion -->
+    <div class="accordion position-relative text-center" style="margin: auto; width: 50%">
+        <!--Accordion wrapper-->
+        <div class="accordion md-accordion" id="accordionEx1" role="tablist" aria-multiselectable="true">
 
-        <!-- spacer -->
-        <div style="height: 1em;"></div>
+            <!-- Accordion card -->
+            <div class="card">
 
-        <h6 class="text-white text-center mx-auto container">Phone2Words's inspiration came from a project called <a
-                href="https://what3words.com/" style="color: rgb(251, 115, 206);" >What3Words</a>: a tool that can convert any location on Earth into 3
-            words.
-            <br>
-            <br>We strive to reach a similar goal -- mapping every 10-digit phone number to 2 words that are easy to
-            remember.</h6>
+                <!-- Card header -->
+                <div class="card-header" role="tab" id="headingTwo1">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo1" aria-expanded="false" aria-controls="collapseTwo1">
+                        <h5 class="mb-0">
+                            What is Dialy <i class="fas fa-fingerprint"></i>
+                        </h5>
+                    </a>
+                </div>
+
+                <!-- Card body -->
+                <div id="collapseTwo1" class="collapse" role="tabpanel" aria-labelledby="headingTwo1" data-parent="#accordionEx1">
+                    <div class="card-body">
+                        Dialy is a radical new take on phone numbers.
+                        <hr>Instead of having to memorize a random sequence of ten digits, phone numbers are assigned Dialys; two short words that are easy to remember.
+                        <hr> Now, instead of having to memorize all these random digits, all you have to remember is two simple words!
+                    </div>
+                </div>
+
+            </div>
+            <!-- Accordion card -->
+
+            <!-- Accordion card -->
+            <div class="card">
+
+                <!-- Card header -->
+                <div class="card-header" role="tab" id="headingTwo2">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo21" aria-expanded="false" aria-controls="collapseTwo21">
+                        <h5 class="mb-0">
+                            Why does Dialy exist? <i class="fas fa-question"></i>
+                        </h5>
+                    </a>
+                </div>
+
+                <!-- Card body -->
+                <div id="collapseTwo21" class="collapse" role="tabpanel" aria-labelledby="headingTwo21" data-parent="#accordionEx1">
+                    <div class="card-body">
+                        Dialy was heavily inspired by <a href="https://what3words.com">What3Words.</a>
+                        <hr>The founders of Dialy were curious as to what in what other applications words could be used to reduce the difficulty of remembering things -- phone numbers were one of the first things that came to mind, they are hard to remember
+                        and can easily be replaced with two unique words.
+                    </div>
+                </div>
+            </div>
+            <!-- Accordion card -->
+
+            <!-- Accordion card -->
+            <div class="card">
+
+                <!-- Card header -->
+                <div class="card-header" role="tab" id="headingThree31">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseThree31" aria-expanded="false" aria-controls="collapseThree31">
+                        <h5 class="mb-0">
+                            How do I use it <i class="fas fa-chalkboard-teacher"></i>
+                        </h5>
+                    </a>
+                </div>
+
+                <!-- Card body -->
+                <div id="collapseThree31" class="collapse" role="tabpanel" aria-labelledby="headingThree31" data-parent="#accordionEx1">
+                    <div class="card-body">
+                        You will be greeted with a search bar: You can enter either a Dialy (two words separated by a colon), or a phone number.
+                        <hr> When beginning to type a word, an auto complete dropdown will appear to choose the appopriate Dialy. Then, the user will be with the original phone number assigned to the entered Dialy, as well as some accompanying metadata and
+                        search history.
+                        <hr> Dialy takes advantage of Firebase's lightning fast indexing with its low latency autocomplete.
+                        <hr> Conversely, if a user enters a phone number, they will be shown the Dialy assigned to it
+                    </div>
+                </div>
+
+            </div>
+            <!-- Accordion card -->
+
+            <!-- Accordion card -->
+            <div class="card">
+
+                <!-- Card header -->
+                <div class="card-header" role="tab" id="headingFour41">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseFour41" aria-expanded="false" aria-controls="collapseFour41">
+                        <h5 class="mb-0">
+                            How does it work <i class="fas fa-microchip"></i>
+                        </h5>
+                    </a>
+                </div>
+
+                <!-- Card body -->
+                <div id="collapseFour41" class="collapse" role="tabpanel" aria-labelledby="headingFour41" data-parent="#accordionEx1">
+                    <div class="card-body">
+
+                        Dialy works by splitting all phone numbers up into two groups of 5 digits. Because of this, Dialy only supports North American phone numbers at the moment. Changes to the codebase would need to be made to support numbers from other countries.
+                        <hr> Dialy assigns one word to each 5 digit number, so it uses a total of 10^5 (100,000) words and assigns two words to every possible ten digit number (even if they are not valid North American phone numbers)
+                        <hr> Dialy was created using Vanilla JS and Bootstrap. Dialy uses Firebase for storage of phone/word assignments as well lightning fast indexing with its low latency autocomplete.
+                        <hr> The website itself is also hosted on Firebase (Yay for free hosting!). Dialy uses its own api, repository here to get accompanying phone number metadata. It acheives this using Google's libphonenumber with a Python wrapper.
+                        <hr> Dialy was developed over the Summer of 2020 by two amateur CS students. As a result, you're almost guaranteed to encounter bugs. If you do, feel free to open a detailed bug report.
+                    </div>
+                </div>
+
+            </div>
+            <!-- Accordion card -->
+
+        </div>
+        <!-- Accordion wrapper -->
     </div>
+    <!-- end accordion -->
+
 
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container text-center">
-            <p class="credit">Made by <a href="https://cra1g.ca/currentprojects.html">Cra1g</a> & <a
-                    href="https://shmkane.com/">shmkane</a> &copy;Dialy 2020
+            <p class="credit">Made by <a href="https://cra1g.ca/currentprojects.html">Cra1g</a> & <a href="https://shmkane.com/">shmkane</a> &copy;Dialy 2020
             </p>
         </div>
     </footer>
@@ -88,15 +178,15 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"
-        integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+    <script src="https://kit.fontawesome.com/bb678533cc.js" crossorigin="anonymous"></script>
+    <script src="js/animation.js"></script>
+
+
 </body>
 
 </html>

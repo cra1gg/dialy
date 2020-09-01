@@ -5,3 +5,4 @@
 firebase-cli.exe
 firebase-debug.txt
 .firebase/hosting..cache
+*.log

@@ -93,8 +93,8 @@ async function logtoDb(phonenum, dialy){
             curr['/'+ newPushKey] = postData;
             ref.update(curr);
         }
-        total_conversions.innerHTML = "This has been converted <strong>" + (previous_count + 1) + "</strong> times." 
-        document.getElementById("total_conversions_word").innerHTML = "This has been converted <strong>" + (previous_count + 1) + "</strong> times." 
+        total_conversions.innerHTML = "This Dialy has been converted <strong>" + (previous_count + 1) + "</strong> times." 
+        document.getElementById("total_conversions_word").innerHTML = "This has Dialy been converted <strong>" + (previous_count + 1) + "</strong> times." 
     });
     
     
@@ -145,6 +145,11 @@ async function getWords() {
     Promise.all([word1, word2]).then((values) => {
         var resultword1;
         var resultword2;
+
+        document.querySelector('#how_to').scrollIntoView({
+            behavior: 'smooth'
+        });
+
         values[0].forEach(function (data) {
             resultword1 = data.child("word").val().toLowerCase();
         });
@@ -156,13 +161,7 @@ async function getWords() {
         document.getElementById("active").id = 'inactive'
         document.getElementById("results").id = 'active'
 
-    }).then(
-        function () {
-            document.querySelector('#how_to').scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
-    )
+    })
 }
 
 /**
@@ -208,6 +207,10 @@ async function getPhone() {
             fetch('https://api.dialy.xyz/lookup/+1' + result)
                 .then((resp) => resp.json())
                 .then(function (data) {
+
+                    document.querySelector('#how_to').scrollIntoView({
+                        behavior: 'smooth'
+                    });
                     // var formatted = "Valid" + data.valid + "Number" + data.number + "\n\Local Format"
                     //     + data.local_format + "\n\International Format" + data.international_format
                     //     + "\n\Country Prefix" + data.country_prefix + "\n\Country Code" + data.country_code
@@ -249,13 +252,7 @@ async function getPhone() {
 
         }
 
-    }).then(
-        function () {
-            document.querySelector('#how_to').scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
-    )
+    })
 }
 
 // Hides all the elements of results
@@ -481,38 +478,3 @@ function copyClipboard(text){
 // document.getElementById("submit").addEventListener("click", getResult); // Submit Button click event
 autocomplete(document.getElementById("input"));
 
-// Wrap every letter in a span
-var dialyTitle = document.querySelector('.ml1 .letters');
-var footerText = document.querySelector('.ml6 .letters');
-
-dialyTitle.innerHTML = dialyTitle.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-footerText.innerHTML = footerText.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
-anime.timeline({ loop: false })
-    .add({
-        targets: '.ml1 .letter',
-        scale: [0.3, 1],
-        opacity: [0, 1],
-        translateZ: 0,
-        easing: "easeOutExpo",
-        duration: 600,
-        delay: (el, i) => 70 * (i + 1)
-    }).add({
-        targets: '.ml1 .line',
-        scaleX: [0, 1],
-        opacity: [0.5, 1],
-        easing: "easeOutExpo",
-        duration: 700,
-        offset: '-=875',
-        delay: (el, i, l) => 80 * (l - i)
-    });
-
-
-anime.timeline({ loop: false })
-    .add({
-        targets: '.ml6 .letter',
-        translateY: ["1.1em", 0],
-        translateZ: 0,
-        duration: 1000,
-        delay: (el, i) => 50 * i
-    });
